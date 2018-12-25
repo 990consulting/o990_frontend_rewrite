@@ -24,17 +24,11 @@
     "react-dom": "^16.4.2",
     "react-helmet": "^5.2.0",
     "react-loader-spinner": "^2.0.6",
-    "react-redux": "^5.0.7",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
-    "react-router-redux": "^5.0.0-alpha.9",
     "react-scripts": "^2.1.1",
     "react-select": "^2.0.0",
     "react-table": "^6.8.6",
-    "redux": "^4.0.0",
-    "redux-actions": "^2.6.1",
-    "redux-persist": "^5.10.0",
-    "redux-saga": "^0.16.0",
     "validator": "^10.8.0"
   },
   "scripts": {
@@ -42,9 +36,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  },
-  "devDependencies": {
-    "redux-devtools-extension": "^2.13.5"
   },
   "browserslist": [
     ">0.2%",
