@@ -1,7 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import NavLink from 'react-router-dom/NavLink';
 import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
 
 import Grid from '@material-ui/core/Grid';
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -460,4 +459,4 @@ const mapStateToProps = (state) => ({
     searchValue: state.search.searchValue 
 });
 
-export default withStyles(styles)(withViewCheck()(withRouter(connect(mapStateToProps, null)(NavigationHeader))));
+export default withStyles(styles)(withViewCheck()(withRouter(NavigationHeader)));

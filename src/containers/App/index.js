@@ -1,18 +1,15 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { withRouter, Switch, Route, Redirect } from 'react-router-dom'; 
+import { withRouter, Switch, Route, Redirect } from 'react-router-dom';
 import classNames from 'classnames';
 
 import withStyles from '@material-ui/core/styles/withStyles';
 
 import AppMenu from 'components/AppMenu';
 import AppFooter from 'components/AppFooter';
-import PrivacyBanner from 'components/PrivacyBanner';
 
 import Home from 'containers/Home';
 
 import { getPageMeta } from 'api/meta'; 
-import { siteIsVisited, showPrivacyBanner } from 'actions/helpers';
 
 import { title, description } from 'constants/meta'; 
 import {
@@ -63,19 +60,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    const { 
-      siteIsVisited, 
-      isSiteAlreadyVisited,
-      isPrivacyBannerShown: isPrivacyBannerShown,
-      showPrivacyBanner
-    } = this.props;
     this.setMetaInfo();
-
-    if(!isSiteAlreadyVisited) {
-      siteIsVisited();
-    } else if (isSiteAlreadyVisited && isPrivacyBannerShown){
-      showPrivacyBanner();
-    }
   }
  
   componentDidUpdate(prevProps) { 
@@ -119,7 +104,6 @@ class App extends React.Component {
               />
             )} />
           </Switch>
-          <PrivacyBanner />
         </main>
         <AppFooter />
       </div>
@@ -127,19 +111,4 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  isSiteVisited: state.helpers.isSiteAlreadyVisited,
-  isPrivacyBannerShown: state.helpers.isPrivacyBannerShown,
-  isOrganizationSearchMode: state.search.isOrganizationSearchMode  
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  siteIsVisited: () => {
-    dispatch(siteIsVisited())
-  },
-  showPrivacyBanner: () => {
-    dispatch(showPrivacyBanner())
-  }
-});
-
-export default withRouter(withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(App)));
+export default withRouter(withStyles(styles)(App));

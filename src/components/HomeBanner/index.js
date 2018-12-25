@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
-import { connect } from 'react-redux';
 import { withRouter, NavLink } from 'react-router-dom';
 
 import Grid from '@material-ui/core/Grid';
@@ -11,8 +10,6 @@ import MaxContainer from 'hoc/MaxContainer';
 import withViewCheck from 'hoc/withViewCheck';
 
 import AutosuggestField from 'components/AutosuggestField';
-
-import { changeSearchMode, storeSearchValue } from 'actions/search';
 
 import { searchOrganizationByQuery, searchPeopleByQuery } from 'api/search';
 import {
@@ -132,9 +129,8 @@ class Banner extends Component {
       isOrganizationTab: label === 'organization'
     }, 
     () => {
-      const { changeMode, history } = this.props;
+      const { history } = this.props;
       const route = label === 'organization' ? organization : people;
-      changeMode(label);
       history.push(route)
     })
   };
@@ -237,9 +233,6 @@ class Banner extends Component {
                       />
                     </Grid>
                     <Grid item xs={12} className={classes.bannerAdvancedSearch}>
-                      {/* <NavLink to={isOrganizationTab ? search : peopleSearch}>
-                        {!isOrganizationTab && 'Advanced people search'}
-                      </NavLink> */}
                     </Grid>
                     {isOrganizationTab && (
                       <Grid item xs={12} className={classes.bannerAdvancedSearch}>
@@ -257,18 +250,4 @@ class Banner extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  isOrganizationSearchMode: state.search.isOrganizationSearchMode
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  changeMode: (mode) => {
-    dispatch(changeSearchMode(mode))
-  },
-  storeValue: (value) => {
-    dispatch(storeSearchValue(value))
-  }
-});
-
-
-export default withStyles(styles)(withViewCheck()(withRouter(connect(mapStateToProps, mapDispatchToProps)(Banner))));
+export default withStyles(styles)(withViewCheck()(withRouter(Banner)));
