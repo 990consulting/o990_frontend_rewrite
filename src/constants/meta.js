@@ -1,0 +1,2 @@
+export const title = 'Open990 - Home - free nonprofit data';
+export const description = `Open990's free data profiles reveal trends on salary, expenses, and financial indicators for over a half million US tax-exempt foundations and charities. Unlocking open IRS Form 990 tax records to empower nonprofit leaders, journalists, and donors through data science.`;

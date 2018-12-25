@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900|Roboto+Condensed');
+
+html,
+body,
+#root {
+  font-family: 'Roboto Condensed', sans-serif;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Lato', sans-serif;
+}
+
+.App {
+  text-align: center;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+footer {
+  flex-shrink: 0;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.Table__itemCount {
+  font-size: 14px;
+}
+
+.Table__pagination {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 10px;
+}
+@media screen and (max-width:600px) {
+  .Table__pagination {
+    padding: 20px 0px;
+  }
+  .ReactTable .rt-tbody .rt-td:nth-child(even) {
+    background: rgba(227, 227, 227, 0.7)!important;
+  }
+  .Table__visiblePagesWrapper button {
+    width: 20px!important;
+    height: 20px!important;
+    padding: 0!important;
+  }
+  .Table__visiblePagesWrapper {
+    display: flex;
+    align-items:center;
+  }
+}
+
+.Table__pageButton {
+  font-size: 15px;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.Table__pageButton:disabled {
+  cursor: not-allowed;
+  color: gray;
+}
+
+.Table__pageButton--active {
+  color: white;
+  font-weight: bold;
+  border-radius: 100px;
+  background-color: #8553ff;
+  width: 32px;
+  height: 32px;
+}
+
+.Table__visiblePagesWrapper button {
+  width: 32px;
+  height: 32px;
+}
+
+.Table__nextPageWrapper>button,
+.Table__prevPageWrapper>button {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  color: #8553ff;
+}
+
+@media screen and (max-width: 960px) {
+    .ReactTable .rt-tbody .rt-td:nth-child(even) {
+        background: rgba(227, 227, 227, 0.7) !important;
+    }
+
+    .ReactTable.-striped .rt-tr.-odd {
+        background: none;
+    }
+
+    .ReactTable.-striped .rt-tr.-even {
+        background: rgba(227, 227, 227, 0.7);
+    }
+
+    .ReactTable.-highlight .rt-tbody .rt-tr:not(.-padRow):hover {
+        background-color: rgba(247, 247, 247, 0.05) !important;
+    }
+}
+
+.ReactTable .-pagination .-btn {
+    color: #8553ff !important;
+    font-weight: bold;
+    background: transparent !important;
+}
+
+.ReactTable .-pagination .-btn[disabled] {
+    color: #9995a3 !important;
+    cursor: default;
+}
+
+.ReactTable.-striped .rt-tr.-even {
+    background: rgba(0,0,0,0.03) !important;
+}
+
+.ReactTable.-striped .rt-tr.-odd {
+    background: none !important;
+}
