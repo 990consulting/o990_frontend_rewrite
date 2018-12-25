@@ -134,17 +134,7 @@ class Banner extends Component {
       history.push(route)
     })
   };
-
-  onSearchChange = (query) => {
-    this.setState({
-      searchValue: query
-    },
-    () => {
-      const { storeValue } = this.props;
-      storeValue(query);
-    });
-  };
-
+  
   onSubmitClick = (event) => {
     if(event){
       event.preventDefault();
