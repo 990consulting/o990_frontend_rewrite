@@ -129,7 +129,7 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => ({
   isSiteVisited: state.helpers.isSiteAlreadyVisited,
-  isPrivacyBanerShown: state.helpers.isPrivacyBanerShown,
+  isPrivacyBannerShown: state.helpers.isPrivacyBannerShown,
   isOrganizationSearchMode: state.search.isOrganizationSearchMode  
 });
 

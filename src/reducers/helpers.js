@@ -1,5 +1,4 @@
 import {
-  TOGGLE_SIDEBAR,
   SHOW_PRIVACY_BANNER,
   CLOSE_PRIVACY_BANNER,
   SITE_IS_VISITED
@@ -8,25 +7,20 @@ import {
 const initialState = {
   isSidebarOpen: true,
   isSiteAlreadyVisited: false,
-  isPrivacyBanerShown: true
+  isPrivacyBannerShown: true
 };
 
 const helpers = (state = initialState, action) => {
   switch (action.type) {
-    case TOGGLE_SIDEBAR:
-      return {
-        ...state,
-        isSidebarOpen: action.payload
-      };
     case SHOW_PRIVACY_BANNER:
       return {
         ...state,
-        isPrivacyBanerShown: true
+        isPrivacyBannerShown: true
       };
     case CLOSE_PRIVACY_BANNER:
       return {
         ...state,
-        isPrivacyBanerShown: false
+        isPrivacyBannerShown: false
       };
     case SITE_IS_VISITED:
       return {

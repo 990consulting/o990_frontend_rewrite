@@ -45,7 +45,7 @@ class PositionedSnackbar extends PureComponent {
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      isOpen: nextProps.isPrivacyBanerShown
+      isOpen: nextProps.isPrivacyBannerShown
     })
   }
 
@@ -88,7 +88,7 @@ class PositionedSnackbar extends PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-  isOpen: state.helpers.isPrivacyBanerShown
+  isOpen: state.helpers.isPrivacyBannerShown
 })
 
 const mapDispatchToProps = (dispatch) => ({
