@@ -8,12 +8,6 @@ import { ConnectedRouter } from 'react-router-redux';
 
 import { MuiThemeProvider } from '@material-ui/core/styles/index';
 
-import { library } from '@fortawesome/fontawesome-svg-core';
-import faGit from '@fortawesome/fontawesome-free-brands/faGit';
-import faLinkedin from '@fortawesome/fontawesome-free-brands/faLinkedin';
-import faEnvelope from '@fortawesome/fontawesome-free-solid/faEnvelope';
-import faBars from '@fortawesome/fontawesome-free-solid/faBars';
-
 import App from 'containers/App';
 
 import theme from 'theme';
@@ -21,13 +15,6 @@ import './App.css';
 import 'react-table/react-table.css'
 
 const {store, persistor} = configureStore();
-
-library.add(
-  faGit,
-  faLinkedin,
-  faEnvelope,
-  faBars
-);
 
 ReactDOM.render(
   <MuiThemeProvider theme={theme}>
