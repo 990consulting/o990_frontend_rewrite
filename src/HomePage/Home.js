@@ -4,8 +4,8 @@ import { Helmet } from 'react-helmet';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Grid from '@material-ui/core/Grid';
 
-import Banner from 'components/HomeBanner';
-import HomeCardRibbon from 'components/HomeCardRibbon';
+import Banner from 'HomePage/HomeBanner';
+import HomeCardRibbon from 'HomePage/HomeCardRibbon';
 
 const styles = (theme) => ({
   container: {

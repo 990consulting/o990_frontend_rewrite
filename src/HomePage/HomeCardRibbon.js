@@ -3,7 +3,7 @@ import React from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Grid from '@material-ui/core/Grid';
 
-import InfoCard from 'components/InfoCard';
+import InfoCard from 'Common/InfoCard';
 import MaxContainer from 'util/MaxContainer';
 
 import {

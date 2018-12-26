@@ -15,7 +15,7 @@ import MenuList from '@material-ui/core/MenuList';
 import Button from '@material-ui/core/Button';
 
 import withViewCheck from 'util/withViewCheck';
-import AutosuggestField from 'components/AutosuggestField';
+import AutosuggestField from 'Common/AutosuggestField';
 
 import DownIcon from '@material-ui/icons/KeyboardArrowDown';
 import SearchIcon from '@material-ui/icons/Search';
@@ -275,11 +275,6 @@ class NavigationHeader extends Component {
             <NavLink to={benchmark}>Benchmark reports</NavLink>
         </span>
       ),
-      // isViewXs && (
-      //   <span className={classes.simpleLink}>
-      //       <NavLink to={api}>APIs</NavLink>
-      //   </span>
-      // ),
       isViewXs && (
         <span className={classes.simpleLink}>
             <NavLink to={productCatalog}>All products</NavLink>

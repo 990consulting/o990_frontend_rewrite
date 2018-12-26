@@ -4,10 +4,10 @@ import classNames from 'classnames';
 
 import withStyles from '@material-ui/core/styles/withStyles';
 
-import AppMenu from 'components/AppMenu';
-import AppFooter from 'components/AppFooter';
+import AppMenu from 'App/AppMenu';
+import AppFooter from 'App/AppFooter';
 
-import Home from 'containers/Home';
+import Home from 'HomePage/Home';
 
 import { getPageMeta } from 'api/meta'; 
 

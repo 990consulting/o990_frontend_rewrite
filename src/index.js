@@ -3,10 +3,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { MuiThemeProvider } from '@material-ui/core/styles/index';
 
-import App from 'containers/App';
+import App from 'App/App.js';
 
 import theme from 'theme';
-import './App.css';
+import './App/App.css';
 import 'react-table/react-table.css'
 
 ReactDOM.render(

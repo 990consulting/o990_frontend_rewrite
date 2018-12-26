@@ -9,7 +9,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import MaxContainer from 'util/MaxContainer';
 import withViewCheck from 'util/withViewCheck';
 
-import AutosuggestField from 'components/AutosuggestField';
+import AutosuggestField from 'Common/AutosuggestField';
 
 import { searchOrganizationByQuery, searchPeopleByQuery } from 'api/search';
 import {

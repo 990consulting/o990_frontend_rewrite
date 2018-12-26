@@ -5,7 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Grid from '@material-ui/core/Grid';
 import withStyles from '@material-ui/core/styles/withStyles';
 
-import NavigationHeader from 'components/NavigationHeader';
+import NavigationHeader from 'App/NavigationHeader';
 import MaxContainer from 'util/MaxContainer';
 
 const styles = (theme) => ({
