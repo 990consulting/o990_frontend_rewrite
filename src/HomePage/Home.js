@@ -6,7 +6,6 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import Grid from '@material-ui/core/Grid';
 
 //import StupidHomeBanner from 'HomePage/StupidHomeBanner';
-import HomeBanner from 'HomePage/HomeBanner';
 import HomeCardRibbon from 'HomePage/HomeCardRibbon';
 
 const styles = (theme) => ({
@@ -15,15 +14,18 @@ const styles = (theme) => ({
   }
 });
 
-const Home = ({
-    classes,
-  }) => (
-  <div className="Home">
-    <Grid container className={classes.container}>
-      <HomeBanner/>
-      <HomeCardRibbon/>
-    </Grid>
-  </div>
-);
+class Home extends React.Component {
+  render() {
+    const { banner } = this.props;
+    return (
+      <div className="Home">
+        <Grid container className={this.props.classes.container}>
+          {banner}
+          <HomeCardRibbon/>
+        </Grid>
+      </div>
+    );
+  }
+}
 
 export default withDynamicMeta(withStyles(styles)(Home));

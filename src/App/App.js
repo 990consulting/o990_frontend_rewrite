@@ -8,7 +8,8 @@ import AppMenu from 'App/AppMenu';
 import AppFooter from 'App/AppFooter';
 
 import Home from 'HomePage/Home';
-
+import OrgHomeBanner from 'HomePage/OrgHomeBanner'
+import PeopleHomeBanner from 'HomePage/PeopleHomeBanner'
 
 import {
   root,
@@ -50,10 +51,10 @@ class App extends React.Component {
               <Redirect to={organization} />
             )} />
             <Route path={organization} exact render={(props) => (
-              <Home {...props} />
+              <Home banner={<OrgHomeBanner/>}{...props} />
             )} />
             <Route path={people} exact render={(props) => (
-              <Home {...props} />
+              <Home banner={<PeopleHomeBanner/>}{...props} />
             )} />
           </Switch>
         </main>

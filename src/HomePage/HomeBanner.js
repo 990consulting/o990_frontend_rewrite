@@ -3,11 +3,10 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import MaxContainer from 'hoc/MaxContainer';
 import withViewCheck from 'hoc/withViewCheck';
 import AutosuggestField from 'Common/AutosuggestField';
-import { withRouter, NavLink } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import classNames from 'classnames';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-
 import {
   exampleSearch,
   organization,
@@ -135,11 +134,7 @@ class HomeBanner extends React.Component {
   onSearchChange = (query) => {
     this.setState({
         searchValue: query
-      },
-      () => {
-        const {storeValue} = this.props;
-        storeValue(query);
-      });
+    });
   };
   
   onSubmitclick = (event) => {
@@ -148,36 +143,42 @@ class HomeBanner extends React.Component {
   };
   
   render() {
-    const {classes, isViewLg} = this.props;
+    const {classes, history} = this.props;
     
     const einLink = (
-      <NavLink to={exampleSearch}>
+      <Link to={exampleSearch}>
         13-5562162
-      </NavLink>
+      </Link>
     );
     
     const nameLink = (
-      <NavLink to={exampleSearch}>
+      <Link to={exampleSearch}>
         Helen Keller International
-      </NavLink>
+      </Link>
     );
     
     return (
       <Grid item xs={12}>
         <div className={classes.banner}>
           <MaxContainer>
-            <h1>Explore profiles on <span>1,808,718</span> nonprofits.</h1>
+            <h1>{this.props.headline}</h1>
             <form onSubmit={this.onSubmitClick}>
               <Grid container className={classes.bannerContainer}>
                 <Grid item xs={10} md={6}>
                   <Grid container className={classNames(classes.bannerContainer, classes.modifyContainer)}>
                     <Grid item xs={6}>
-                      <Button className={classNames(classes.tabButton, 'left', 'active')}>
+                      <Button
+                        className={classNames(classes.tabButton, 'left', 'active')}
+                        onClick={() => history.push("/org")}
+                      >
                         {'Search Organizations'}
                       </Button>
                     </Grid>
                     <Grid item xs={6}>
-                      <Button className={classNames(classes.tabButton, 'right')}>
+                      <Button
+                        className={classNames(classes.tabButton, 'right')}
+                        onClick={() => history.push("/people")}
+                      >
                         {'Search People'}
                       </Button>
                     </Grid>
