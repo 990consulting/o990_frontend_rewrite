@@ -5,6 +5,7 @@ import withDynamicMeta from 'hoc/withDynamicMeta'
 import withStyles from '@material-ui/core/styles/withStyles';
 import Grid from '@material-ui/core/Grid';
 
+//import StupidHomeBanner from 'HomePage/StupidHomeBanner';
 import HomeBanner from 'HomePage/HomeBanner';
 import HomeCardRibbon from 'HomePage/HomeCardRibbon';
 

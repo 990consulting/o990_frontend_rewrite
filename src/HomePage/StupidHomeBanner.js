@@ -1,13 +1,17 @@
-import React from 'react';
-import withStyles from '@material-ui/core/styles/withStyles';
-import MaxContainer from 'hoc/MaxContainer';
-import withViewCheck from 'hoc/withViewCheck';
-import AutosuggestField from 'Common/AutosuggestField';
-import { withRouter, NavLink } from 'react-router-dom';
+import React, { Component } from 'react';
 import classNames from 'classnames';
+import { withRouter, NavLink } from 'react-router-dom';
+
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
+import withStyles from '@material-ui/core/styles/withStyles';
 
+import MaxContainer from 'hoc/MaxContainer';
+import withViewCheck from 'hoc/withViewCheck';
+
+import AutosuggestField from 'Common/AutosuggestField';
+
+import { searchOrganizationByQuery, searchPeopleByQuery } from 'api/search';
 import {
   exampleSearch,
   organization,
@@ -112,50 +116,51 @@ const styles = theme => ({
   }
 });
 
-class HomeBanner extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      searchValue: ''
-    };
-  }
-  
-  submit() {
-    // TODO Derived components must supply searchByQuery, headline, buttons
-    const {history, searchByQuery} = this.props;
-    const {searchValue} = this.state;
-    
-    searchByQuery(searchValue)
-    .then(res => res.data)
-    .then(url => {
-      history.push(url);
-    });
-  }
-  
-  onSearchChange = (query) => {
+class StupidHomeBanner extends Component {
+  state = {
+    isOrganizationTab: this.props.isOrganizationSearchMode,
+    searchValue: ''
+  };
+
+  onTabClick = (label) => {
     this.setState({
-        searchValue: query
-      },
-      () => {
-        const {storeValue} = this.props;
-        storeValue(query);
-      });
+      isOrganizationTab: label === 'organization'
+    }, 
+    () => {
+      const { history } = this.props;
+      const route = label === 'organization' ? organization : people;
+      history.push(route)
+    })
   };
   
-  onSubmitclick = (event) => {
-    event.preventDefault();
-    this.submit();
+  onSubmitClick = (event) => {
+    if(event){
+      event.preventDefault();
+    }
+    const { searchValue, isOrganizationTab } = this.state;
+    const { history } = this.props;
+
+    const searchByQuery = isOrganizationTab ? 
+      searchOrganizationByQuery:
+      searchPeopleByQuery;
+
+    searchByQuery(searchValue)
+      .then(res => res.data)
+      .then(url => {
+        history.push(url);
+      })
   };
-  
+
   render() {
-    const {classes, isViewLg} = this.props;
-    
+    const { classes, isViewLg } = this.props;
+    const { isOrganizationTab } = this.state;
+
     const einLink = (
       <NavLink to={exampleSearch}>
         13-5562162
       </NavLink>
     );
-    
+
     const nameLink = (
       <NavLink to={exampleSearch}>
         Helen Keller International
@@ -166,31 +171,60 @@ class HomeBanner extends React.Component {
       <Grid item xs={12}>
         <div className={classes.banner}>
           <MaxContainer>
-            <h1>Explore profiles on <span>1,808,718</span> nonprofits.</h1>
+            {
+              isOrganizationTab ?
+                (<h1>Explore profiles on <span>1,808,718</span> nonprofits.</h1>
+                )
+                :
+                (<h1>
+                    View executive compensation and trustee data from {isViewLg && <br/>} <span>1,808,718</span> organizations.
+                  </h1>
+                )
+            }
             <form onSubmit={this.onSubmitClick}>
               <Grid container className={classes.bannerContainer}>
                 <Grid item xs={10} md={6}>
                   <Grid container className={classNames(classes.bannerContainer, classes.modifyContainer)}>
-                    <Grid item xs={6}>
-                      <Button className={classNames(classes.tabButton, 'left', 'active')}>
+                    <Grid
+                      item
+                      xs={6}
+                    >
+                      <Button
+                        className={classNames(classes.tabButton, 'left', {
+                          active: isOrganizationTab
+                        })}
+                        onClick={() => this.onTabClick('organization')}
+                      >
                         {'Search Organizations'}
                       </Button>
                     </Grid>
-                    <Grid item xs={6}>
-                      <Button className={classNames(classes.tabButton, 'right')}>
+                    <Grid
+                      item
+                      xs={6}
+                    >
+                      <Button
+                        className={classNames(classes.tabButton, 'right', {
+                          active: !isOrganizationTab
+                        })}
+                        onClick={() => this.onTabClick('people')}
+                      >
                         {'Search People'}
                       </Button>
                     </Grid>
                     <Grid item xs={12} className={classes.bannerSearch}>
                       <AutosuggestField
                         onSearchClick={this.onSubmitClick}
-                        isOrganizationTab={true}
+                        isOrganizationTab={isOrganizationTab}
                         onChangeValue={this.onSearchChange}
                       />
                     </Grid>
                     <Grid item xs={12} className={classes.bannerAdvancedSearch}>
-                      Example: {nameLink}, {einLink}
                     </Grid>
+                    {isOrganizationTab && (
+                      <Grid item xs={12} className={classes.bannerAdvancedSearch}>
+                        Example: {nameLink}, {einLink}
+                      </Grid>
+                    )}
                   </Grid>
                 </Grid>
               </Grid>
@@ -202,5 +236,4 @@ class HomeBanner extends React.Component {
   }
 }
 
-export default withStyles(styles)(withViewCheck()(withRouter(HomeBanner)));
-
+export default withStyles(styles)(withViewCheck()(withRouter(StupidHomeBanner)));
