@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Grid from '@material-ui/core/Grid';
 
-import Banner from 'HomePage/HomeBanner';
+import HomeBanner from 'HomePage/HomeBanner';
 import HomeCardRibbon from 'HomePage/HomeCardRibbon';
 
 const styles = (theme) => ({
@@ -26,7 +26,7 @@ const Home = ({
       { noIndex && <meta name="robots" content='noindex' /> } 
     </Helmet>
     <Grid container className={classes.container}>
-      <Banner/>
+      <HomeBanner/>
       <HomeCardRibbon/>
     </Grid>
   </div>

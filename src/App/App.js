@@ -9,14 +9,13 @@ import AppFooter from 'App/AppFooter';
 
 import Home from 'HomePage/Home';
 
-import { getPageMeta } from 'api/meta'; 
+import { getPageMeta } from 'api/meta';
 
-import { title, description } from 'constants/meta'; 
 import {
   root,
   organization,
   people
-} from 'routes/internal';
+} from 'App/routes';
 
 const styles = theme => ({
   root: {
@@ -34,26 +33,29 @@ const styles = theme => ({
   }
 });
 
+const defaultTitle = 'Open990 - Home - free nonprofit data';
+const defaultDescription = `Open990's free data profiles reveal trends on salary, expenses, and financial indicators for over a half million US tax-exempt foundations and charities. Unlocking open IRS Form 990 tax records to empower nonprofit leaders, journalists, and donors through data science.`;
+
 class App extends React.Component {
   state = { 
-    title: this.props.title || title, 
-    description : this.props.description || description,
+    title: this.props.title || defaultTitle,
+    description : this.props.description || defaultDescription,
     noIndex: this.props.noIndex || false
   };
 
   setMetaInfo = () => {
-    getPageMeta(this.props.location.pathname).then(res => { 
-      const { title: apiTitle, description: apiDescription, noindex } = res.data; 
-      this.setState({ 
-        title: apiTitle, 
-        description: apiDescription,
+    getPageMeta(this.props.location.pathname).then(res => {
+      const { title, description, noindex } = res.data;
+      this.setState({
+        title: title,
+        description: description,
         noIndex: noindex
       }) 
     }).catch(error => {
       console.log(`Meta not provided for ${this.props.location.pathname} route`);
       this.setState({ 
-        title, 
-        description,
+        defaultTitle,
+        defaultDescription,
         noIndex: false
       });
     });
@@ -71,8 +73,8 @@ class App extends React.Component {
 
   render() {
     const { classes, isOrganizationSearchMode } = this.props;
-    const { 
-      title: apiTitle, 
+    const {
+      title: apiTitle,
       description: apiDescription,
       noIndex
     } = this.state;

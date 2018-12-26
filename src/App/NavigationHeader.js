@@ -25,16 +25,15 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 import { searchOrganizationByQuery, searchPeopleByQuery } from 'api/search';
 
-import { consulting } from 'routes/external';
+import { consulting } from 'App/routes';
 import {
   contact,
-  api,
   benchmark,
   root,
   customData,
   productCatalog,
   resources
-} from 'routes/internal';
+} from 'App/routes';
 
 const styles = (theme) => ({
   root: {
@@ -251,8 +250,6 @@ class NavigationHeader extends Component {
         classes, 
         isViewXs, 
         isViewSm, 
-        location: {pathname},
-        isOrganizationSearchMode
     } = this.props;
     const { 
         anchorEl, 
@@ -448,10 +445,5 @@ class NavigationHeader extends Component {
     );
   }
 }
-
-const mapStateToProps = (state) => ({
-    isOrganizationSearchMode: state.search.isOrganizationSearchMode,
-    searchValue: state.search.searchValue 
-});
 
 export default withStyles(styles)(withViewCheck()(withRouter(NavigationHeader)));

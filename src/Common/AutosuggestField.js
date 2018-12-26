@@ -18,7 +18,7 @@ import {
   root, 
   search as searchRoute, 
   peopleSearch 
-} from 'routes/internal';
+} from 'App/routes';
 
 const styles = theme => ({
   root: {

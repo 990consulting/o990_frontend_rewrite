@@ -10,7 +10,7 @@ import {
   benchmark,
   customData,
   productCatalog
-} from 'routes/internal';
+} from 'App/routes';
 
 const styles = (theme) => ({
   container: {

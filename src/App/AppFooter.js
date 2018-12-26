@@ -9,11 +9,8 @@ import {
   termsOfService,
   privacyPolicy,
   copyrightPolicy,
-} from 'routes/internal';
-
-import {
   aws
-} from 'routes/external';
+} from 'App/routes';
 
 const styles = (theme) => ({
   root: {

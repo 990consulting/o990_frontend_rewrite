@@ -13,12 +13,10 @@ import AutosuggestField from 'Common/AutosuggestField';
 
 import { searchOrganizationByQuery, searchPeopleByQuery } from 'api/search';
 import {
-  search,
-  peopleSearch,
   exampleSearch,
   organization,
   people
-} from 'routes/internal';
+} from 'App/routes';
 
 const styles = theme => ({
   banner: {
@@ -118,7 +116,7 @@ const styles = theme => ({
   }
 });
 
-class Banner extends Component {
+class HomeBanner extends Component {
   state = {
     isOrganizationTab: this.props.isOrganizationSearchMode,
     searchValue: ''
@@ -240,4 +238,4 @@ class Banner extends Component {
   }
 }
 
-export default withStyles(styles)(withViewCheck()(withRouter(Banner)));
+export default withStyles(styles)(withViewCheck()(withRouter(HomeBanner)));

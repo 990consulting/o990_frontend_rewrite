@@ -35,6 +35,7 @@ const border = {
 };
 
 const typography = {
+  useNextVariants: true,
   fontFamily: {
     heading: `'Lato', sans-serif`,
     main: `'Roboto Condensed', sans-serif`,
