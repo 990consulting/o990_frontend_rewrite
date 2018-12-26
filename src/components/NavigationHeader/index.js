@@ -14,7 +14,7 @@ import Popper from '@material-ui/core/Popper';
 import MenuList from '@material-ui/core/MenuList';
 import Button from '@material-ui/core/Button';
 
-import withViewCheck from 'hoc/withViewCheck';
+import withViewCheck from 'util/withViewCheck';
 import AutosuggestField from 'components/AutosuggestField';
 
 import DownIcon from '@material-ui/icons/KeyboardArrowDown';

@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Grid from '@material-ui/core/Grid';
 
-import MaxContainer from 'hoc/MaxContainer';
+import MaxContainer from 'util/MaxContainer';
 
 import {
   termsOfService,

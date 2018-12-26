@@ -6,8 +6,8 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import withStyles from '@material-ui/core/styles/withStyles';
 
-import MaxContainer from 'hoc/MaxContainer';
-import withViewCheck from 'hoc/withViewCheck';
+import MaxContainer from 'util/MaxContainer';
+import withViewCheck from 'util/withViewCheck';
 
 import AutosuggestField from 'components/AutosuggestField';
 
