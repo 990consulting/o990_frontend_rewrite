@@ -1,5 +1,5 @@
-import React from 'react';
 import { withRouter, Switch, Route, Redirect } from 'react-router-dom';
+import React from 'react';
 import classNames from 'classnames';
 
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -59,7 +59,7 @@ class App extends React.Component {
         noIndex: false
       });
     });
-  }
+  };
 
   componentDidMount() {
     this.setMetaInfo();
@@ -72,10 +72,10 @@ class App extends React.Component {
   } 
 
   render() {
-    const { classes, isOrganizationSearchMode } = this.props;
+    const { classes } = this.props;
     const {
-      title: apiTitle,
-      description: apiDescription,
+      title,
+      description,
       noIndex
     } = this.state;
 
@@ -84,24 +84,22 @@ class App extends React.Component {
         <AppMenu />
         <main className={classes.content}>
           <Switch>
-            <Route path={root} exact render={() =>(
-              isOrganizationSearchMode ?
-                <Redirect to={organization} /> :
-                <Redirect to={people} />
+            <Route path={root} exact render={() => (
+              <Redirect to={organization} />
             )} />
             <Route path={organization} exact render={(props) => (
               <Home
                 {...props}
-                title={apiTitle}
-                description={apiDescription}
+                title={title}
+                description={description}
                 noIndex={noIndex}
               />
             )} />
             <Route path={people} exact render={(props) => (
               <Home
                 {...props}
-                title={apiTitle}
-                description={apiDescription}
+                title={title}
+                description={description}
                 noIndex={noIndex}
               />
             )} />
