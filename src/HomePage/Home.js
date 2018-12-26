@@ -1,5 +1,6 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+
+import withDynamicMeta from 'hoc/withDynamicMeta'
 
 import withStyles from '@material-ui/core/styles/withStyles';
 import Grid from '@material-ui/core/Grid';
@@ -15,16 +16,8 @@ const styles = (theme) => ({
 
 const Home = ({
     classes,
-    title,
-    description,
-    noIndex
   }) => (
   <div className="Home">
-    <Helmet defer={false}>
-      <title>{title}</title>
-      <meta name="description" content={description} />
-      { noIndex && <meta name="robots" content='noindex' /> } 
-    </Helmet>
     <Grid container className={classes.container}>
       <HomeBanner/>
       <HomeCardRibbon/>
@@ -32,4 +25,4 @@ const Home = ({
   </div>
 );
 
-export default withStyles(styles)(Home);
+export default withDynamicMeta(withStyles(styles)(Home));

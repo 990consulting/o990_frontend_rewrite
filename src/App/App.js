@@ -9,7 +9,6 @@ import AppFooter from 'App/AppFooter';
 
 import Home from 'HomePage/Home';
 
-import { getPageMeta } from 'api/meta';
 
 import {
   root,
@@ -33,52 +32,15 @@ const styles = theme => ({
   }
 });
 
-const defaultTitle = 'Open990 - Home - free nonprofit data';
-const defaultDescription = `Open990's free data profiles reveal trends on salary, expenses, and financial indicators for over a half million US tax-exempt foundations and charities. Unlocking open IRS Form 990 tax records to empower nonprofit leaders, journalists, and donors through data science.`;
 
 class App extends React.Component {
-  state = { 
-    title: this.props.title || defaultTitle,
-    description : this.props.description || defaultDescription,
-    noIndex: this.props.noIndex || false
-  };
-
-  setMetaInfo = () => {
-    getPageMeta(this.props.location.pathname).then(res => {
-      const { title, description, noindex } = res.data;
-      this.setState({
-        title: title,
-        description: description,
-        noIndex: noindex
-      }) 
-    }).catch(error => {
-      console.log(`Meta not provided for ${this.props.location.pathname} route`);
-      this.setState({ 
-        defaultTitle,
-        defaultDescription,
-        noIndex: false
-      });
-    });
-  };
-
-  componentDidMount() {
-    this.setMetaInfo();
-  }
- 
-  componentDidUpdate(prevProps) { 
-    if(this.props.location.pathname !== prevProps.location.pathname) {
-      this.setMetaInfo();
-    }
-  } 
-
+  /*constructor(props) {
+    super(props);
+    //console.log("Props for app constructor: " + JSON.stringify(props));
+  }*/
+  
   render() {
     const { classes } = this.props;
-    const {
-      title,
-      description,
-      noIndex
-    } = this.state;
-
     return (
       <div className={classNames('App', classes.root)}>
         <AppMenu />
@@ -88,20 +50,10 @@ class App extends React.Component {
               <Redirect to={organization} />
             )} />
             <Route path={organization} exact render={(props) => (
-              <Home
-                {...props}
-                title={title}
-                description={description}
-                noIndex={noIndex}
-              />
+              <Home {...props} />
             )} />
             <Route path={people} exact render={(props) => (
-              <Home
-                {...props}
-                title={title}
-                description={description}
-                noIndex={noIndex}
-              />
+              <Home {...props} />
             )} />
           </Switch>
         </main>

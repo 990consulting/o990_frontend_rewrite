@@ -4,7 +4,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import Grid from '@material-ui/core/Grid';
 
 import InfoCard from 'Common/InfoCard';
-import MaxContainer from 'util/MaxContainer';
+import MaxContainer from 'hoc/MaxContainer';
 
 import {
   benchmark,
