@@ -15,8 +15,8 @@ import SearchIcon from '@material-ui/icons/Search';
 
 import {
   root, 
-  search as searchRoute, 
-  peopleSearch 
+  //search as searchRoute,
+  //peopleSearch
 } from 'App/routes';
 
 class AutosuggestField extends PureComponent {

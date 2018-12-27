@@ -37,58 +37,48 @@ class HomeBannerTabs extends React.Component {
   buttonContent = [
     {
       "url": "/org",
-      "label": "Search Organizations"
+      "label": "Search Organization"
     },
     {
       "url": "/people",
       "label": "Search People"
     }
   ];
-  
+
+  getClassName(i) {
+    let classArr = [this.props.classes.tabButton];
+    if (i === 0) {
+      classArr.push('left')
+    }
+    if (i === this.buttonContent.length - 1) {
+      classArr.push('right');
+    }
+    if (i === this.props.activeTab) {
+      classArr.push('active')
+    }
+    return classNames(classArr);
+  }
   makeButton(i) {
-    const { classes, history, activeTab } = this.props;
-    const tabButton = classes.tabButton;
-    const left = i === 0;
-    const right = i === this.buttonContent.length - 1;
-    const active = i === activeTab;
     const content = this.buttonContent[i];
-    const className = classNames({tabButton, 'left': left, 'right': right, 'active': active});
-    const onClick = () => history.push(content.url);
-    return (<Grid item xs={6}>
-      <Button className={className} onClick = {onClick}>
+    const onClick = () => this.props.history.push(content.url);
+    const className = this.getClassName(i);
+    return (<Grid key={content.label} item xs={6}>
+      <Button onClick={onClick} className={className}>
         {content.label}
       </Button>
     </Grid>);
   }
   
   makeButtons() {
-    const { classes, history, activeTab } = this.props;
-    const tabButton = classes.tabButton;
-    
-    return (
-      <Fragment>
-        <Grid item xs={6}>
-          <Button
-            className={classNames(tabButton, 'left', 'active')}
-            onClick={() => history.push("/org")}
-          >
-            {'Search Organizations'}
-          </Button>
-        </Grid>
-        <Grid item xs={6}>
-          <Button
-            className={classNames(tabButton, 'right')}
-            onClick={() => history.push("/people")}
-          >
-            {'Search People'}
-          </Button>
-        </Grid>
-      </Fragment>
-    );
+    let ret = [];
+    for (let i = 0; i < this.buttonContent.length; i++) {
+      const button = this.makeButton(i);
+      ret.push(button);
+    }
+    return ret;
   }
   
   render() {
-    const { classes, history, activeTab } = this.props;
     return (<Fragment>
       {this.makeButtons()}
     </Fragment>);

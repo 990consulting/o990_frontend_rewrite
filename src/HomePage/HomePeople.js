@@ -12,7 +12,7 @@ class HomePeople extends React.Component {
   headline = (<h1>View executive compensation and trustee data from {this.props.isViewLg && <br/>} <span>1,808,718</span> organizations.</h1>);
   
   render() {
-    return (<Home headline={this.headline} asProps={peopleASProps} {...this.props} />);
+    return (<Home headline={this.headline} asProps={peopleASProps} activeTab={1}  {...this.props} />);
   }
 }
 

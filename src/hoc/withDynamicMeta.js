@@ -17,7 +17,7 @@ function withDynamicMeta(WrappedComponent) {
     }
     
     setMetaInfo() {
-      console.log("Most recent URL: " + this.props.location.pathname);
+      //console.log("Most recent URL: " + this.props.location.pathname);
       getPageMeta(this.props.location.pathname).then(res => {
         const { title, description, noindex } = res.data;
         this.setState({
