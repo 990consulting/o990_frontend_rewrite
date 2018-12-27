@@ -17,11 +17,11 @@ const styles = (theme) => ({
 
 class Home extends React.Component {
   render() {
-    const { headline } = this.props;
+    const { headline, asProps } = this.props;
     return (
       <div className="Home">
         <Grid container className={this.props.classes.container}>
-          <HomeBanner headline={headline} />
+          <HomeBanner headline={headline} asProps={asProps}/>
           <HomeCardRibbon/>
         </Grid>
       </div>

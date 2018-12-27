@@ -143,7 +143,7 @@ class HomeBanner extends React.Component {
   };
   
   render() {
-    const {classes, history} = this.props;
+    const {classes, history, asProps} = this.props;
     
     const einLink = (
       <Link to={exampleSearch}>
@@ -185,8 +185,8 @@ class HomeBanner extends React.Component {
                     <Grid item xs={12} className={classes.bannerSearch}>
                       <AutosuggestField
                         onSearchClick={this.onSubmitClick}
-                        isOrganizationTab={true}
                         onChangeValue={this.onSearchChange}
+                        {...asProps}
                       />
                     </Grid>
                     <Grid item xs={12} className={classes.bannerAdvancedSearch}>

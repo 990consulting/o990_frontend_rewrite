@@ -2,7 +2,7 @@
 export const root =  '/';
 export const organization = '/org';
 export const people = '/people';
-export const search =  '/search/org';
+export const orgSearch =  '/search/org';
 export const peopleSearch = '/search/people';
 export const organizationProfile =  '/org/:ein';
 export const copyrightPolicy =  '/dmca-copyright-policy';
