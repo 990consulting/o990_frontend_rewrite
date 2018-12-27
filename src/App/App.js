@@ -7,9 +7,8 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import AppMenu from 'App/AppMenu';
 import AppFooter from 'App/AppFooter';
 
-import Home from 'HomePage/Home';
-import OrgHomeBanner from 'HomePage/OrgHomeBanner'
-import PeopleHomeBanner from 'HomePage/PeopleHomeBanner'
+import HomeOrg from 'HomePage/HomeOrg';
+import HomePeople from 'HomePage/HomePeople';
 
 import {
   root,
@@ -51,10 +50,10 @@ class App extends React.Component {
               <Redirect to={organization} />
             )} />
             <Route path={organization} exact render={(props) => (
-              <Home banner={<OrgHomeBanner/>}{...props} />
+              <HomeOrg {...props} />
             )} />
             <Route path={people} exact render={(props) => (
-              <Home banner={<PeopleHomeBanner/>}{...props} />
+              <HomePeople {...props} />
             )} />
           </Switch>
         </main>

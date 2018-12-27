@@ -7,6 +7,7 @@ import Grid from '@material-ui/core/Grid';
 
 //import StupidHomeBanner from 'HomePage/StupidHomeBanner';
 import HomeCardRibbon from 'HomePage/HomeCardRibbon';
+import HomeBanner from 'HomePage/HomeBanner';
 
 const styles = (theme) => ({
   container: {
@@ -16,11 +17,11 @@ const styles = (theme) => ({
 
 class Home extends React.Component {
   render() {
-    const { banner } = this.props;
+    const { headline } = this.props;
     return (
       <div className="Home">
         <Grid container className={this.props.classes.container}>
-          {banner}
+          <HomeBanner headline={headline} />
           <HomeCardRibbon/>
         </Grid>
       </div>
