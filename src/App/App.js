@@ -1,20 +1,12 @@
-import { withRouter, Switch, Route, Redirect } from 'react-router-dom';
 import React from 'react';
 import classNames from 'classnames';
 
+import { withRouter } from 'react-router-dom';
 import withStyles from '@material-ui/core/styles/withStyles';
 
+import SiteRouter from 'App/SiteRouter';
 import AppMenu from 'App/AppMenu';
 import AppFooter from 'App/AppFooter';
-
-import HomeOrg from 'HomePage/HomeOrg';
-import HomePeople from 'HomePage/HomePeople';
-
-import {
-  root,
-  organization,
-  people
-} from 'App/routes';
 
 const styles = theme => ({
   root: {
@@ -45,17 +37,7 @@ class App extends React.Component {
       <div className={classNames('App', classes.root)}>
         <AppMenu />
         <main className={classes.content}>
-          <Switch>
-            <Route path={root} exact render={() => (
-              <Redirect to={organization} />
-            )} />
-            <Route path={organization} exact render={(props) => (
-              <HomeOrg {...props} />
-            )} />
-            <Route path={people} exact render={(props) => (
-              <HomePeople {...props} />
-            )} />
-          </Switch>
+          <SiteRouter />
         </main>
         <AppFooter />
       </div>
