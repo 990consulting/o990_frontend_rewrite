@@ -6,7 +6,7 @@ import AutosuggestField from 'Common/AutosuggestField';
 import { withRouter, Link } from 'react-router-dom';
 import classNames from 'classnames';
 import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
+import HomeBannerTabs from 'HomePage/HomeBannerTabs';
 import {
   exampleSearch,
   organization,
@@ -143,7 +143,7 @@ class HomeBanner extends React.Component {
   };
   
   render() {
-    const {classes, history, asProps} = this.props;
+    const {classes, activeTab, asProps} = this.props;
     
     const einLink = (
       <Link to={exampleSearch}>
@@ -166,22 +166,7 @@ class HomeBanner extends React.Component {
               <Grid container className={classes.bannerContainer}>
                 <Grid item xs={10} md={6}>
                   <Grid container className={classNames(classes.bannerContainer, classes.modifyContainer)}>
-                    <Grid item xs={6}>
-                      <Button
-                        className={classNames(classes.tabButton, 'left', 'active')}
-                        onClick={() => history.push("/org")}
-                      >
-                        {'Search Organizations'}
-                      </Button>
-                    </Grid>
-                    <Grid item xs={6}>
-                      <Button
-                        className={classNames(classes.tabButton, 'right')}
-                        onClick={() => history.push("/people")}
-                      >
-                        {'Search People'}
-                      </Button>
-                    </Grid>
+                    <HomeBannerTabs  />
                     <Grid item xs={12} className={classes.bannerSearch}>
                       <AutosuggestField
                         onSearchClick={this.onSubmitClick}

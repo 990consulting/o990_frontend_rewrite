@@ -16,7 +16,7 @@ class HomeOrg extends React.Component {
   };
   
   render() {
-    return (<Home headline={this.headline} asProps={orgASProps} {...this.props} />);
+    return (<Home headline={this.headline} asProps={orgASProps} activeTab={0} {...this.props} />);
   }
 }
 
