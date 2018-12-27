@@ -6,6 +6,7 @@ import AutosuggestField from 'Common/AutosuggestField';
 import { withRouter, Link } from 'react-router-dom';
 import classNames from 'classnames';
 import Grid from '@material-ui/core/Grid';
+import HomeBannerTabs from 'HomePage/HomeBannerTabs';
 import Button from '@material-ui/core/Button';
 import {
   exampleSearch,
@@ -39,30 +40,6 @@ const styles = theme => ({
   },
   modifyContainer: {
     marginTop: '3.4375rem'
-  },
-  tabButton: {
-    padding: 0,
-    width: '100%',
-    fontWeight: 400,
-    fontFamily: theme.typography.fontFamily.main,
-    textTransform: 'none',
-    fontSize: '1rem',
-    [theme.breakpoints.down('xs')]: {
-      fontSize: '0.8rem',
-    },
-    color: theme.color.white,
-    height: '40px',
-    backgroundColor: theme.color.primary.standard,
-    cursor: 'pointer',
-    '&.left': {
-      borderRadius: '4px 0 0 0',
-    },
-    '&.right': {
-      borderRadius: '0 4px 0 0',
-    },
-    '&.active, &:hover': {
-      backgroundColor: theme.color.primary.faded
-    }
   },
   bannerSearch: {
     padding: '0 !important'
@@ -143,7 +120,7 @@ class HomeBanner extends React.Component {
   };
   
   render() {
-    const {classes, history, asProps} = this.props;
+    const {classes, activeTab, asProps} = this.props;
     
     const einLink = (
       <Link to={exampleSearch}>
@@ -166,22 +143,7 @@ class HomeBanner extends React.Component {
               <Grid container className={classes.bannerContainer}>
                 <Grid item xs={10} md={6}>
                   <Grid container className={classNames(classes.bannerContainer, classes.modifyContainer)}>
-                    <Grid item xs={6}>
-                      <Button
-                        className={classNames(classes.tabButton, 'left', 'active')}
-                        onClick={() => history.push("/org")}
-                      >
-                        {'Search Organizations'}
-                      </Button>
-                    </Grid>
-                    <Grid item xs={6}>
-                      <Button
-                        className={classNames(classes.tabButton, 'right')}
-                        onClick={() => history.push("/people")}
-                      >
-                        {'Search People'}
-                      </Button>
-                    </Grid>
+                    <HomeBannerTabs activeTab={activeTab} />
                     <Grid item xs={12} className={classes.bannerSearch}>
                       <AutosuggestField
                         onSearchClick={this.onSubmitClick}

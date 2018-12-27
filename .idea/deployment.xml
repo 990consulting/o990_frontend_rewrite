@@ -5,21 +5,27 @@
       <paths name="console.intranet.open990">
         <serverdata>
           <mappings>
-            <mapping deploy="o990_frontend_rewrite" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/o990_frontend_rewrite/" local="$PROJECT_DIR$" web="/" />
           </mappings>
           <excludedPaths>
+            <excludedPath path="node_modules" />
             <excludedPath path="node_modules/" />
-            <excludedPath path="/node_modules/" />
             <excludedPath path="node_modules/*" />
+            <excludedPath path="/node_modules" />
+            <excludedPath path="/node_modules/" />
             <excludedPath path="/node_modules/*" />
+            <excludedPath path="/home/ubuntu/o990_frontend_rewrite/node_modules" />
+            <excludedPath path="/home/ubuntu/o990_frontend_rewrite/node_modules/" />
+            <excludedPath path="/home/ubuntu/o990_frontend_rewrite/node_modules/*" />
             <excludedPath local="true" path="node_modules" />
             <excludedPath local="true" path="node_modules/" />
             <excludedPath local="true" path="node_modules/*" />
+            <excludedPath local="true" path="/node_modules" />
+            <excludedPath local="true" path="/node_modules/" />
             <excludedPath local="true" path="/node_modules/*" />
-            <excludedPath path="/home/ubuntu/o990_frontend_rewrite/" />
-            <excludedPath path="/home/ubuntu/o990_frontend_rewrite/*" />
-            <excludedPath path="node_modules" />
+            <excludedPath local="true" path="$PROJECT_DIR$/node_modules" />
             <excludedPath local="true" path="$PROJECT_DIR$/node_modules/" />
+            <excludedPath local="true" path="$PROJECT_DIR$/node_modules/*" />
           </excludedPaths>
         </serverdata>
       </paths>
