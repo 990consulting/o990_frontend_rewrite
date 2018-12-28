@@ -12,6 +12,7 @@ import CustomData from 'Static/CustomData';
 import Resources from 'Static/Resources';
 import Api from 'Static/Api';
 import Catalog from 'Static/Catalog';
+import OrgSearchResults from 'searchResults/OrgSearchResults';
 
 import {
   root,
@@ -28,7 +29,8 @@ import {
   api,
   catalog,
   data,
-  searchData
+  searchData,
+  orgSearch
 } from 'App/routes';
 
 /*
@@ -73,6 +75,9 @@ class SiteRouter extends React.Component {
         )} />
         <Route path={root} exact render={() => (
           <Redirect to={homeOrg} />
+        )} />
+        <Route path={orgSearch} render={(props) => (
+          <OrgSearchResults {...props} />
         )} />
         <Route path={data} exact render={() =>(
           <Redirect to={resources} /> )} />
