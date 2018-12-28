@@ -16,21 +16,22 @@ import {
 class HomeBanner extends React.Component {
   constructor(props) {
     super(props);
+    console.log(JSON.stringify(Object.keys(props)));
     this.state = {
       searchValue: ''
     };
   }
   
   submit() {
-    // TODO Derived components must supply searchByQuery, headline, buttons
+    console.log("submit triggered");
     const {history, searchByQuery} = this.props;
     const {searchValue} = this.state;
-    
+  
     searchByQuery(searchValue)
-    .then(res => res.data)
-    .then(url => {
-      history.push(url);
-    });
+      .then(res => res.data)
+      .then(url => {
+        history.push(url);
+      })
   }
   
   onSearchChange = (query) => {
@@ -40,6 +41,7 @@ class HomeBanner extends React.Component {
   };
   
   onSubmitclick = (event) => {
+    console.log("onSubmitClick triggered");
     event.preventDefault();
     this.submit();
   };
@@ -58,19 +60,21 @@ class HomeBanner extends React.Component {
       </Link>
     );
     
+    const onSubmitClick = this.onSubmitclick.bind(this);
+    
     return (
       <Grid item xs={12}>
         <div className={classes.banner}>
           <MaxContainer>
             {this.props.headline}
-            <form onSubmit={this.onSubmitClick}>
+            <form onSubmit={onSubmitClick}>
               <Grid container className={classes.bannerContainer}>
                 <Grid item xs={10} md={6}>
                   <Grid container className={classNames(classes.bannerContainer, classes.modifyContainer)}>
                     <HomeBannerTabs activeTab={activeTab} />
                     <Grid item xs={12} className={classes.bannerSearch}>
                       <AutosuggestField
-                        onSearchClick={this.onSubmitClick}
+                        onSearchClick={onSubmitClick}
                         onChangeValue={this.onSearchChange}
                         {...asProps}
                       />

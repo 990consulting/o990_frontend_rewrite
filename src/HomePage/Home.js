@@ -17,11 +17,16 @@ const styles = (theme) => ({
 
 class Home extends React.Component {
   render() {
-    const { headline, asProps, activeTab } = this.props;
+    const { headline, asProps, activeTab, searchByQuery } = this.props;
     return (
       <div className="Home">
         <Grid container className={this.props.classes.container}>
-          <HomeBanner headline={headline} asProps={asProps} activeTab={activeTab} />
+          <HomeBanner
+            headline={headline}
+            asProps={asProps}
+            activeTab={activeTab}
+            searchByQuery={searchByQuery}
+          />
           <HomeCardRibbon/>
         </Grid>
       </div>

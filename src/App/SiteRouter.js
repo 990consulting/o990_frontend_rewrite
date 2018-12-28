@@ -38,13 +38,14 @@ import {
  */
 class SiteRouter extends React.Component {
   render() {
+    const { location } = this.props;
     return (
       <Switch>
-        <Route path={homeOrg} exact render={(props) => (
-          <HomeOrg {...props} />
+        <Route path={homeOrg} exact render={() => (
+          <HomeOrg location={location}/>
         )} />
-        <Route path={homePeople} exact render={(props) => (
-          <HomePeople {...props} />
+        <Route path={homePeople} exact render={() => (
+          <HomePeople location={location} />
         )} />
         <Route path={copyrightPolicy} exact render={(props) => (
           <CopyrightPolicy {...props} />
