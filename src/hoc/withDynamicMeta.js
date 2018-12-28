@@ -54,11 +54,13 @@ function withDynamicMeta(WrappedComponent) {
             <meta name="description" content={description} />
             { noIndex && <meta name="robots" content='noindex' /> }
           </Helmet>
-          <WrappedComponent {...this.props} />)
+          <WrappedComponent {...this.props} />
         </Fragment>
       );
     }
   }
 }
 
+/*
+* */
 export default withDynamicMeta;

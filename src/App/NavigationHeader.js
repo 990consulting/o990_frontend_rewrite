@@ -32,7 +32,7 @@ import {
   benchmark,
   root,
   customData,
-  productCatalog,
+  catalog,
   resources
 } from 'App/routes';
 
@@ -127,7 +127,7 @@ class NavigationHeader extends Component {
       ),
       isViewXs && (
         <span className={classes.simpleLink}>
-            <NavLink to={productCatalog}>All products</NavLink>
+            <NavLink to={catalog}>All products</NavLink>
         </span>
       ),
       !isViewXs ? (
@@ -171,7 +171,7 @@ class NavigationHeader extends Component {
                         classes={{root: classes.menuItem}}
                         onClick={this.handleListMenuClose}
                       >
-                        <NavLink to={productCatalog}>All products</NavLink>
+                        <NavLink to={catalog}>All products</NavLink>
                       </MenuItem>
                     </MenuList>
                   </ClickAwayListener>

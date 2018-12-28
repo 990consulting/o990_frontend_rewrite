@@ -6,6 +6,8 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import classNames from 'classnames';
 import withViewCheck from 'hoc/withViewCheck';
 
+import { homeOrg, homePeople } from "../App/routes";
+
 const styles = (theme) => ({
   tabButton: {
     padding: 0,
@@ -36,11 +38,11 @@ const styles = (theme) => ({
 class HomeBannerTabs extends React.Component {
   buttonContent = [
     {
-      "url": "/org",
+      "url": homeOrg,
       "label": "Search Organization"
     },
     {
-      "url": "/people",
+      "url": homePeople,
       "label": "Search People"
     }
   ];

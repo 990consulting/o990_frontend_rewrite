@@ -9,7 +9,7 @@ import MaxContainer from 'hoc/MaxContainer';
 import {
   benchmark,
   customData,
-  productCatalog
+  catalog
 } from 'App/routes';
 
 const styles = (theme) => ({
@@ -106,7 +106,7 @@ const HomeCardRibbon = ({
             headerText={'EXPLORE PRODUCTS'}
             bodyText={['For nonprofits, consultants, and researchers']}
             linkText={'Learn More'}
-            linkHref={productCatalog}
+            linkHref={catalog}
           />
         </Grid>
         <Grid item>
