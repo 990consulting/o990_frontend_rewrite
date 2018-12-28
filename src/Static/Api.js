@@ -5,15 +5,7 @@ import classNames from 'classnames';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Grid from '@material-ui/core/Grid';
 
-import {faBook} from '@fortawesome/free-solid-svg-icons';
-import {faGlobeAmericas} from '@fortawesome/free-solid-svg-icons';
-import {faChartBar} from '@fortawesome/free-solid-svg-icons';
-
 import MaxContainer from 'hoc/MaxContainer';
-
-import {
-  demoOrg
-} from 'App/routes'
 
 const styles = (theme) => ({
   root: {

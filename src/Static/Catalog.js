@@ -1,6 +1,6 @@
 import React from 'react';
 import withDynamicMeta from 'hoc/withDynamicMeta'
-import { withRouter, NavLink } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import classNames from 'classnames';
 
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -11,8 +11,6 @@ import ProductCard from 'Common/ProductCard';
 import MaxContainer from 'hoc/MaxContainer';
 
 import {
-  search,
-  resources,
   root,
   pro,
   benchmark,

@@ -10,7 +10,6 @@ import MaxContainer from 'hoc/MaxContainer';
 import classNames from 'classnames';
 
 import {
-  organizationProfile,
   termsOfService,
   mail,
   consulting
@@ -39,7 +38,7 @@ class PrivacyPolicy extends React.Component {
                     Policy.&nbsp; <span className={classes.chapterTitle}>By using or accessing the Services in any manner, you acknowledge that you accept the practices and policies outlined in this Privacy Policy, and you hereby consent that we will collect, use, and share your information in the following ways.</span>
                   </p>
                   <p>Remember that your use of 990’s Services is at all times subject to the <a
-                    href={organizationProfile}>Terms of Service</a>, which incorporates this Privacy
+                    href={termsOfService}>Terms of Service</a>, which incorporates this Privacy
                     Policy.&nbsp; Any terms we use in this Policy without defining them have the definitions given to them
                     in
                     the <a href={termsOfService}>Terms of Service</a></p>

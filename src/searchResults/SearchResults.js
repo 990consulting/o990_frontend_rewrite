@@ -2,7 +2,6 @@ import React from 'react';
 import ReactTable from 'react-table';
 import { withRouter } from 'react-router-dom';
 import withStyles from '@material-ui/core/styles/withStyles';
-import withDynamicMeta from 'hoc/withDynamicMeta';
 import Grid from '@material-ui/core/Grid';
 import { styles } from 'searchResults/searchStyles';
 
