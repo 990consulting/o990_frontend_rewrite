@@ -17,26 +17,23 @@ import faBars from '@fortawesome/fontawesome-free-solid/faBars';
 class MobileSidebar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isCollapsed: props.collapsed
-    };
   }
   
   render() {
     const {
       scrollToTop,
-      isCollapsed,
+      collapsed,
       toggleCollapse,
       classes
     } = this.props;
     
     return(
       <Hidden smUp>
-        {!isCollapsed && (
+        {!collapsed && (
           <Dialog
             fullScreen
             className={classes.dialog}
-            open={!isCollapsed}
+            open={!collapsed}
             TransitionComponent={Transition}
           >
             <div
@@ -51,7 +48,7 @@ class MobileSidebar extends React.Component {
         
             <div className={classes.menu}>
               {
-                !isCollapsed && (
+                !collapsed && (
                   <Grid item xs={12} className={classes.mobileHeader}>
                     <div onClick={() => scrollToTop()}>
                       Title goes here
