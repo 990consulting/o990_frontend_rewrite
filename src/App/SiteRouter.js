@@ -43,12 +43,8 @@ class SiteRouter extends React.Component {
     const { location } = this.props;
     return (
       <Switch>
-        <Route path={homeOrg} exact render={() => (
-          <HomeOrg location={location}/>
-        )} />
-        <Route path={homePeople} exact render={() => (
-          <HomePeople location={location} />
-        )} />
+        <Route path={homeOrg} exact component={HomeOrg} />
+        <Route path={homePeople} exact component={HomePeople} />
         <Route path={copyrightPolicy} exact render={(props) => (
           <CopyrightPolicy {...props} />
         )} />
@@ -79,9 +75,7 @@ class SiteRouter extends React.Component {
         <Route path={root} exact render={() => (
           <Redirect to={homeOrg} />
         )} />
-        <Route path={orgSearch} render={(props) => (
-          <OrgSearchResults {...props} />
-        )} />
+        <Route path={orgSearch} component={OrgSearchResults} />
         <Route path = {orgProfile} render={() => (
           <OrgProfile  location={location}/>
         )} />
