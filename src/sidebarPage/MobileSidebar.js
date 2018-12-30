@@ -8,8 +8,8 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
 import Dialog from '@material-ui/core/Dialog';
-import { Transition } from 'Common/SidebarTransition';
-import {styles} from 'Common/sidebarStyles';
+import { Transition } from 'sidebarPage/SidebarTransition';
+import {styles} from 'sidebarPage/sidebarStyles';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import faBars from '@fortawesome/fontawesome-free-solid/faBars';
@@ -20,7 +20,8 @@ class MobileSidebar extends React.Component {
       scrollToTop,
       collapsed,
       toggleCollapse,
-      classes
+      classes,
+      content
     } = this.props;
     
     return(
@@ -56,7 +57,7 @@ class MobileSidebar extends React.Component {
                 onClick={() => scrollToTop()}
                 className={classNames(classes.tocItem, classes.link)}
               >
-                TOC goes here
+                {content}
               </div>
             </div>
           </Dialog>

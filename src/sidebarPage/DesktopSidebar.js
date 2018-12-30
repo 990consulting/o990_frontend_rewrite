@@ -6,7 +6,7 @@ import withViewCheck from 'hoc/withViewCheck';
 
 import withStyles from '@material-ui/core/styles/withStyles';
 import Grid from '@material-ui/core/Grid';
-import {styles} from 'Common/sidebarStyles';
+import {styles} from 'sidebarPage/sidebarStyles';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import faBars from '@fortawesome/fontawesome-free-solid/faBars';
@@ -17,7 +17,8 @@ class DesktopSidebar extends React.Component {
       scrollToTop,
       collapsed,
       toggleCollapse,
-      classes
+      classes,
+      content
     } = this.props;
     
     return(
@@ -31,7 +32,7 @@ class DesktopSidebar extends React.Component {
                     onClick={() => scrollToTop()}
                     className={classNames(classes.tocItem, classes.link)}
                   >
-                    {"" + collapsed}
+                    {content}
                   </div>
                   <Grid item xs={12} className={classes.links}>
                   </Grid>

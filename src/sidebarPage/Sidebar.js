@@ -4,9 +4,9 @@ import classNames from 'classnames';
 
 import withStyles from '@material-ui/core/styles/withStyles';
 import Grid from '@material-ui/core/Grid';
-import { styles } from "Common/sidebarStyles";
-import MobileSidebar from "Common/MobileSidebar";
-import DesktopSidebar from "Common/DesktopSidebar";
+import { styles } from "sidebarPage/sidebarStyles";
+import MobileSidebar from "sidebarPage/MobileSidebar";
+import DesktopSidebar from "sidebarPage/DesktopSidebar";
 
 class Sidebar extends React.Component {
 
@@ -25,7 +25,8 @@ class Sidebar extends React.Component {
     const {
       classes,
       toggleCollapse,
-      collapsed
+      collapsed,
+      content
     } = this.props;
     
     const scrollToTop = this.scrollToTop.bind(this);
@@ -41,11 +42,13 @@ class Sidebar extends React.Component {
             scrollToTop={scrollToTop}
             collapsed={collapsed}
             toggleCollapse={toggleCollapse}
+            content={content}
           />
           <DesktopSidebar
             scrollToTop={scrollToTop}
             collapsed={collapsed}
             toggleCollapse={toggleCollapse}
+            content={content}
           />
         </Grid>
       </div>
