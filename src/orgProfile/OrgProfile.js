@@ -22,6 +22,7 @@ class OrganizationProfile extends React.Component {
       sidebarCollapsed: !sidebarCollapsed
     });
   }
+  
   render() {
     const { classes } = this.props;
     const { sidebarCollapsed } = this.state;

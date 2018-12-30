@@ -15,10 +15,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import faBars from '@fortawesome/fontawesome-free-solid/faBars';
 
 class MobileSidebar extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  
   render() {
     const {
       scrollToTop,
