@@ -3,9 +3,6 @@ import React from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Grid from '@material-ui/core/Grid';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import faInfoCircle from '@fortawesome/fontawesome-free-solid/faInfoCircle';
-
 const styles = theme => ({
   absentWrapper: {
     display: 'flex',
@@ -131,26 +128,10 @@ const MarqueeCard = ({
     });
   };
 
-  const marqueeAbsent = () => (
-    <Grid item xs={12} md={6}>
-      <Grid container className={classes.absentWrapper}>
-        <Grid item xs={12} sm={1} className={classes.iconWrapper}>
-          <FontAwesomeIcon icon={faInfoCircle} />
-        </Grid>
-        <Grid item xs={12} sm={11}>
-          <p>This organization does not file its tax return electronically. 
-            <br />
-            As a result, we have only basic information on it.
-            </p>
-        </Grid>
-      </Grid>
-    </Grid>
-  );
-
   const renderContent = (marquees) => {
     switch (marquees.length) {
       case 0:
-        return marqueeAbsent(marquees);
+        return null;
       case 1:
         return marqueeSimple(marquees);
       default:

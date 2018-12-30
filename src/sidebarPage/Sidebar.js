@@ -30,7 +30,6 @@ class Sidebar extends React.Component {
     } = this.props;
     
     const scrollToTop = this.scrollToTop.bind(this);
-    console.log("collapsed?" + collapsed);
     return (
       <div>
         <Grid
