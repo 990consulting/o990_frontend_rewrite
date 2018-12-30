@@ -1,13 +1,14 @@
 import React, { Fragment } from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
 import { styles } from 'orgProfile/orgProfileStyles';
-
+import DummyExpansionPanel from 'orgProfile/DummyExpansionPanel';
 import OrgExpansionPanel from "orgProfile/OrgExpansionPanel";
 
 class OrgProfileDetails extends React.Component {
   constructChild(i) {
-    let childContent = this.props.body[i];
-    return <OrgExpansionPanel key={"card_" + childContent.card_id} periods={this.props.periods} raw={childContent} />
+    //let childContent = this.props.body[i];
+    //return <OrgExpansionPanel key={"card_" + childContent.card_id} periods={this.props.periods} raw={childContent} />
+    return <DummyExpansionPanel/>
   }
   
   constructTopLevelPanels() {
