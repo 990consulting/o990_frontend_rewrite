@@ -18,7 +18,7 @@ class DesktopSidebar extends React.Component {
       collapsed,
       toggleCollapse,
       classes,
-      content
+      children
     } = this.props;
     
     return(
@@ -32,7 +32,7 @@ class DesktopSidebar extends React.Component {
                     onClick={() => scrollToTop()}
                     className={classNames(classes.tocItem, classes.link)}
                   >
-                    {content}
+                    {children}
                   </div>
                   <Grid item xs={12} className={classes.links}>
                   </Grid>

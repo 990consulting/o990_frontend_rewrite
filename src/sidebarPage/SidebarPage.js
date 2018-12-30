@@ -42,7 +42,9 @@ class OrganizationProfile extends React.Component {
           <Grid container>
             {/* Sidebar */}
             <Grid item className={sidebarCollapsed && this.props.isViewMdUp ? classes.sideClose : classes.sideOpen} >
-              <Sidebar content={sidebarContent} titleText={"Contents"} collapsed={sidebarCollapsed} toggleCollapse={toggleCollapse} />
+              <Sidebar titleText={"Contents"} collapsed={sidebarCollapsed} toggleCollapse={toggleCollapse}>
+                {sidebarContent}
+              </Sidebar>
             </Grid>
             {/* Body -- adjusts size when sidebar is opened and closed */}
             <Grid

@@ -26,7 +26,7 @@ class Sidebar extends React.Component {
       classes,
       toggleCollapse,
       collapsed,
-      content
+      children
     } = this.props;
     
     const scrollToTop = this.scrollToTop.bind(this);
@@ -42,14 +42,16 @@ class Sidebar extends React.Component {
             scrollToTop={scrollToTop}
             collapsed={collapsed}
             toggleCollapse={toggleCollapse}
-            content={content}
-          />
+          >
+            {children}
+          </MobileSidebar>
           <DesktopSidebar
             scrollToTop={scrollToTop}
             collapsed={collapsed}
             toggleCollapse={toggleCollapse}
-            content={content}
-          />
+          >
+            {children}
+          </DesktopSidebar>
         </Grid>
       </div>
     );

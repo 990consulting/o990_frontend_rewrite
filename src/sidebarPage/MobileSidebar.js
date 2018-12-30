@@ -21,7 +21,7 @@ class MobileSidebar extends React.Component {
       collapsed,
       toggleCollapse,
       classes,
-      content
+      children
     } = this.props;
     
     return(
@@ -44,20 +44,16 @@ class MobileSidebar extends React.Component {
             </div>
         
             <div className={classes.menu}>
-              {
-                !collapsed && (
-                  <Grid item xs={12} className={classes.mobileHeader}>
-                    <div onClick={() => scrollToTop()}>
-                      Title goes here
-                    </div>
-                  </Grid>
-                )
-              }
+              <Grid item xs={12} className={classes.mobileHeader}>
+                <div onClick={() => scrollToTop()}>
+                  Title goes here
+                </div>
+              </Grid>
               <div
                 onClick={() => scrollToTop()}
                 className={classNames(classes.tocItem, classes.link)}
               >
-                {content}
+                {children}
               </div>
             </div>
           </Dialog>
