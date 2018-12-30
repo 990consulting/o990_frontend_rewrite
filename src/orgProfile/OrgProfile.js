@@ -48,7 +48,7 @@ class OrganizationProfile extends React.Component {
     if (loaded) {
       bodyContent = (<Fragment>
         <OrgProfileHeader content={header} />
-        <OrgProfileDetails skeleton={body} periods={periods} />
+        <OrgProfileDetails body={body} periods={periods} />
       </Fragment>);
     } else if (error) {
       bodyContent = (<h2>Something went wrong</h2>);
