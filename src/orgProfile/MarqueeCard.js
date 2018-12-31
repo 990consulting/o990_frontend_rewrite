@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018 990 Consulting, LLC. All rights reserved.
+ */
+
 import React from 'react';
 
 import withStyles from '@material-ui/core/styles/withStyles';

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018 990 Consulting, LLC. All rights reserved.
+ */
+
 import { BrowserRouter } from 'react-router-dom';
 import React from 'react';
 import ReactDOM from 'react-dom';

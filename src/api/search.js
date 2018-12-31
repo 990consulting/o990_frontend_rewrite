@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018 990 Consulting, LLC. All rights reserved.
+ */
+
 import apiClient from '.';
 
 export const getListOfOrganizationSuggestion = (query) => {

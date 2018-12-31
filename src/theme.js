@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018 990 Consulting, LLC. All rights reserved.
+ */
+
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 
 const color = {

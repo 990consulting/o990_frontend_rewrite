@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018 990 Consulting, LLC. All rights reserved.
+ */
+
 const text = {
   foundation: `Coming soon: Spreadsheet of 90,000+ private foundations! Data include charity disbursement
   amount, assets, and other financial information. For the 50,000+ foundations that e-file the 990-PF, this dataset includes past grant recipients purposes, submission deadlines, contact

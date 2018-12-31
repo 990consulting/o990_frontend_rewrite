@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018 990 Consulting, LLC. All rights reserved.
+ */
+
 import { orgSearch, peopleSearch } from 'App/routes';
 import { getListOfOrganizationSuggestion, getListOfPeopleSuggestion } from 'api/search';
 

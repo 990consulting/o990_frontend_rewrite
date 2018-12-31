@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018 990 Consulting, LLC. All rights reserved.
+ */
+
 export const styles = (theme) => ({
   slider: {
     minHeight: '100%',

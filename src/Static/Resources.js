@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018 990 Consulting, LLC. All rights reserved.
+ */
+
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import withDynamicMeta from 'hoc/withDynamicMeta'

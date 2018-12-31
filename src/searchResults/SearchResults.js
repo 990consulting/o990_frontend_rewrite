@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018 990 Consulting, LLC. All rights reserved.
+ */
+
 import React, { Fragment} from 'react';
 import SidebarPage from 'sidebarPage/SidebarPage';
 import SearchResultsBody from 'searchResults/SearchResultsBody';
