@@ -8,6 +8,7 @@ import { withRouter } from 'react-router-dom';
 import apiClient from 'api';
 import OrgProfileHeader from "./OrgProfileHeader";
 import OrgProfileDetails from "./OrgProfileDetails";
+import OrgProfileSidebarContent from './OrgProfileSidebarContent'
 
 class OrganizationProfile extends React.Component {
  
@@ -40,16 +41,17 @@ class OrganizationProfile extends React.Component {
         })
     });
   }
-  
+ 
   render() {
-    const sidebarContent = <h2>Sidebar content</h2>;
     const { loaded, header, body, periods, error } = this.state;
     let bodyContent = null;
+    let sidebarContent = null;
     if (loaded) {
       bodyContent = (<Fragment>
         <OrgProfileHeader content={header} />
         <OrgProfileDetails body={body} periods={periods} />
       </Fragment>);
+      sidebarContent = <OrgProfileSidebarContent body={body} />
     } else if (error) {
       bodyContent = (<h2>Something went wrong</h2>);
     } else {
