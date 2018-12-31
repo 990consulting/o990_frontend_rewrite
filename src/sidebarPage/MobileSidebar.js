@@ -25,7 +25,7 @@ class MobileSidebar extends React.Component {
     } = this.props;
     
     return(
-      <Hidden smUp>
+      <Hidden mdUp>
         {!collapsed && (
           <Dialog
             fullScreen

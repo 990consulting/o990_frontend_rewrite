@@ -69,7 +69,7 @@ class OrgDataTable extends Component {
 	
 	render() {
 		if (!this.state.isLoaded) {
-			return (<div>Loading table {this.props.table_id}</div>);
+			return (<div>&nbsp;</div>);
 		} else {
 			return (<ReactTable
 				columns={this.createColumns()}

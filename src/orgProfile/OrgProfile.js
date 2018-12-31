@@ -9,6 +9,7 @@ import apiClient from 'api';
 import OrgProfileHeader from "./OrgProfileHeader";
 import OrgProfileDetails from "./OrgProfileDetails";
 import OrgProfileSidebarContent from './OrgProfileSidebarContent'
+import Loader from 'react-loader-spinner'
 
 class OrganizationProfile extends React.Component {
  
@@ -44,20 +45,26 @@ class OrganizationProfile extends React.Component {
  
   render() {
     const { loaded, header, body, periods, error } = this.state;
-    let bodyContent = null;
-    let sidebarContent = null;
+    const { classes } = this.props;
     if (loaded) {
-      bodyContent = (<Fragment>
+      const bodyContent = (<Fragment>
         <OrgProfileHeader content={header} />
         <OrgProfileDetails body={body} periods={periods} />
       </Fragment>);
-      sidebarContent = <OrgProfileSidebarContent body={body} />
+      const sidebarContent = <OrgProfileSidebarContent body={body} />
+      return (<SidebarPage sidebarContent={sidebarContent} bodyContent={bodyContent} />);
     } else if (error) {
-      bodyContent = (<h2>Something went wrong</h2>);
+      return <div>Something went wrong</div>
     } else {
-      bodyContent = (<h2>I'm loading</h2>);
+      return (<div className={classes.loaderWrapper}>
+        <Loader
+          type='ThreeDots'
+          color='#6839d3'
+          height='75'
+          width='75'
+        />
+      </div>)
     }
-    return (<SidebarPage sidebarContent={sidebarContent} bodyContent={bodyContent} />);
   }
 }
 
