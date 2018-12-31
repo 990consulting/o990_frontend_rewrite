@@ -2,13 +2,19 @@ import React, { Fragment } from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
 import { styles } from 'orgProfile/orgProfileStyles';
 import OrgExpansionPanel from "orgProfile/OrgExpansionPanel";
+import Grid from '@material-ui/core/Grid';
 
 class OrgProfileDetails extends React.Component {
   constructChild(i) {
     let childContent = this.props.body[i];
-    return <OrgExpansionPanel key={"card_" + childContent.card_id} periods={this.props.periods} raw={childContent} />
+    return (<Grid item xs={12}>
+      <Grid container spacing={24}>
+        <Grid item xs={12}>
+          <OrgExpansionPanel key={"card_" + childContent.card_id} periods={this.props.periods} raw={childContent} />
+        </Grid>
+      </Grid>
+    </Grid>);
   }
-  
   constructTopLevelPanels() {
     let children = [];
     for (let i = 0; i < this.props.body.length; i++) {
@@ -19,7 +25,9 @@ class OrgProfileDetails extends React.Component {
   }
   
   render() {
-    return (<Fragment>{this.constructTopLevelPanels()}</Fragment>);
+    return (<Grid container spacing={24}>
+      {this.constructTopLevelPanels()}
+    </Grid>);
   }
 }
 

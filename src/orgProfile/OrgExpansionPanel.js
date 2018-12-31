@@ -1,21 +1,42 @@
-import React, { Component } from 'react';
+import React, { Fragment } from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
 import OrgDataTable from './OrgDataTable';
 import StyledPanel from "./StyledPanel";
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 
 const styles = () => ({});
-class OrgExpansionPanel extends Component {
+class OrgExpansionPanel extends React.Component {
     constructTableChild(childData) {
         let table_id = childData.table_id;
         return (
-          <div>Data table goes here</div>
+          <OrgDataTable
+            key={childData.table_id}
+            table_id={table_id}
+            periods={this.props.periods}
+          />
         );
     }
-
+   
     constructPanelChild(childData) {
-        return (<OrgExpansionPanel key={"panel_" + childData.card_id} raw={childData} periods={this.props.periods} />);
+        return (
+          <Grid item xs={12}>
+              <Grid container spacing={24}>
+                  <Grid item xs={12}>
+                      <OrgExpansionPanel
+                        key={childData.card_id}
+                        raw={childData}
+                        periods={this.props.periods}
+                      />
+                  </Grid>
+              </Grid>
+          </Grid>
+        );
     }
-
+    /*constructPanelChild(childData) {
+        return (<div></div>);
+    }*/
+    
     constructChild(childData) {
         let childType = childData["type"]; // Is "type" a protected keyword in Javascript?
         if (childType === "table") {
@@ -24,10 +45,10 @@ class OrgExpansionPanel extends Component {
             return this.constructPanelChild(childData);
         }
         throw new Error("Unexpected child type '" + childType + "'");
-
-
+        
+        
     }
-	constructChildren() {
+    constructChildren() {
         let childContent = this.props.raw.content;
         let children = [];
         for (let i = 0; i < childContent.length; i++) {
@@ -35,14 +56,26 @@ class OrgExpansionPanel extends Component {
             children.push(child)
         }
         return children;
-	}
-
-    constructExpansionPanel() {
-        return (
-          <StyledPanel {...this.props} />
-        );
     }
 
+    getLabel() {
+        return this.props.raw.body;
+    }
+    
+    startExpanded() {
+        return "toc" in this.props.raw;
+    }
+    
+    constructExpansionPanel() {
+        return (
+          <StyledPanel label={this.getLabel()} startExpanded={this.startExpanded()} displayMode={this.props.raw.card}>
+              <Grid container spacing={24}>
+                  {this.constructChildren()}
+              </Grid>
+          </StyledPanel>
+        );
+    }
+    
     render() {
         return (<div>{this.constructExpansionPanel()}</div>);
     }

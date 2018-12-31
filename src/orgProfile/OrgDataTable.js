@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactTable from 'react-table';
 
 class OrgDataTable extends Component {
 	constructor(props) {
@@ -12,18 +13,12 @@ class OrgDataTable extends Component {
 	
 	componentDidMount() {
 		// TODO Bring this in line with the rest of the API uses
-		let url = "https://prod.preview.open990/api/org/table/" + this.props.table_id
+		let url = "http://test.preview.open990/api/org/table/" + this.props.table_id + "/";
 		fetch(url)
 			.then(res => res.json())
 			.then(
 				(result) => {
-					// TODO: Rewrite API to provide content in this format (after Oril engagement)
-					let rows = [];
-					for (let i = 0; i < result.data.length; i++) {
-						let row_data = result.data[i];
-						let row = [row_data.label].concat(row_data.data);
-						rows.push(row)
-					}
+					let rows = result.data;
 					this.setState({
 						isLoaded: true,
 						rows: rows
@@ -31,12 +26,57 @@ class OrgDataTable extends Component {
 				}
 			);
 	}
+
+	createYearColumns() {
+		const {periods} = this.props;
+		const columns = [{
+			Header: '',
+			width: "40%",
+			accessor: "label"
+		}];
+		for (let i = 0; i < periods.length; i++) {
+			const column = {
+				Header: periods[i],
+				width: "20%",
+				accessor: periods[i]
+			};
+			columns.push(column)
+		}
+		return columns;
+	}
+
+	createSpanColumns() {
+		const columns = [{
+			Header: '',
+			width: "40%",
+			accessor: "label"
+		}, {
+			Header: '',
+			width: "60%",
+			accessor: "span"
+		}];
+		return columns
+	}
+	
+	createColumns() {
+		const firstRow = this.state.rows[0];
+		if ("span" in firstRow) {
+			return this.createSpanColumns();
+		} else {
+			return this.createYearColumns();
+		}
+	}
 	
 	render() {
 		if (!this.state.isLoaded) {
 			return (<div>Loading table {this.props.table_id}</div>);
 		} else {
-			return (<div>{JSON.stringify(this.state.rows)}</div>);
+			return (<ReactTable
+				columns={this.createColumns()}
+				data={this.state.rows}
+				showPagination={false}
+				minRows={0}
+			/>);
 		}
 	}
 }
