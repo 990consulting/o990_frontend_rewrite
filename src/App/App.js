@@ -20,7 +20,8 @@ const styles = theme => ({
   },
   content: {
     flexGrow: 1,
-    backgroundColor: theme.color.background.faded
+    backgroundColor: theme.color.background.faded,
+    marginTop: '90px'
   }
 });
 

@@ -39,8 +39,6 @@ import {
   orgProfileExtended
 } from 'App/routes';
 
-import OrgProfile from "../orgProfile/OrgProfile";
-
 class SiteRouter extends React.Component {
   render() {
     return (
