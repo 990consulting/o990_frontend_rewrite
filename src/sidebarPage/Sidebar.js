@@ -38,7 +38,7 @@ class Sidebar extends React.Component {
       <div>
         <Grid
           container
-          className={classNames('slider', classes.slider)}
+          className={classNames('slider', classes.slider) + " sidebar-container"}
           onScroll={this.handleScroll}
         >
           <MobileSidebar

@@ -16,7 +16,8 @@ const styles = (theme) => ({
   appBar: {
     backgroundColor: theme.color.white,
     boxShadow: 'none',
-    color: theme.color.black
+    color: theme.color.black,
+    position: 'fixed'
   },
   toolbar:{
     [theme.breakpoints.up('sm')]: {

@@ -37,36 +37,32 @@ export const styles = theme => ({
     }
   },
   sideOpen: {
-    width: '25%',
+    width: '300px',
     backgroundColor: theme.color.white,
-    transition: 'width 0.5s ease',
-    [theme.breakpoints.down('xs')]: {
-      width: '100%',
-      marginRight: 0
-    },
     '& .slider': {
       width: '24%'
     }
   },
   sideClose: {
-    transition: 'width 0.5s ease',
-    width: '3%',
+    width: '50px',
     '& .slider':  {
       width: '2%'
     }
   },
   main: {
-    padding: '0 0 1.75rem 0',
-    transition: 'width 0.5s ease'
+    padding: '0 0 1.75rem 0'
   },
   mainOpen: {
-    width: '97%'
+    width: 'calc(100% - 50px)',
+    [theme.breakpoints.down('sm')]: {
+      width: '100%'
+    }
   },
   mainClose: {
     display: 'flex',
     justifyContent: 'flex-end',
     flexDirection: 'column-reverse',
-    width: '75%',
+    width: 'calc(100%-300px)',
     '&>div': {
       width: '98%',
       marginLeft: '2%'
@@ -79,6 +75,9 @@ export const styles = theme => ({
         }
       }
     }
+  },
+  [theme.breakpoints.down('xs')]: {
+    width: '100%'
   },
   loaderWrapper: {
     left: 0,
