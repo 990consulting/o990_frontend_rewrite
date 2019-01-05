@@ -33,18 +33,15 @@ import {
   api,
   catalog,
   data,
-  //searchData,
   orgSearch,
-  orgProfile
+  orgProfile,
+  orgProfileExtended
 } from 'App/routes';
+
 import OrgProfile from "../orgProfile/OrgProfile";
 
-/*
-
- */
 class SiteRouter extends React.Component {
   render() {
-    const { location } = this.props;
     return (
       <Switch>
         <Route path={homeOrg} exact component={HomeOrg} />
@@ -80,9 +77,9 @@ class SiteRouter extends React.Component {
           <Redirect to={homeOrg} />
         )} />
         <Route path={orgSearch} component={OrgSearchResults} />
-        <Route path = {orgProfile} render={() => (
-          <OrgProfile  location={location}/>
-        )} />
+        {/* Note: Although listed in the doco, path={[orgProfile, orgProfileExtended]} doesn't work */}
+        <Route path = {orgProfile} component={OrgProfile} />
+        <Route path = {orgProfileExtended} component={OrgProfile} />
         <Route path={data} exact render={() =>(
           <Redirect to={resources} /> )} />
         <Route path={pro} exact render={() =>(
@@ -92,5 +89,4 @@ class SiteRouter extends React.Component {
     )
   }
 }
-
 export default withRouter(SiteRouter);
