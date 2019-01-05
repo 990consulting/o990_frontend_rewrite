@@ -8,7 +8,8 @@ export const homeOrg = '/org';
 export const homePeople = '/people';
 export const orgSearch =  '/search/org';
 export const peopleSearch = '/search/people';
-export const orgProfile =  ['/org/:ein', '/org/:ein/(.*)'];
+export const orgProfile =  '/org/:ein';
+export const orgProfileExtended =  '/org/:ein/(.*)';
 export const copyrightPolicy =  '/dmca-copyright-policy';
 export const privacyPolicy =  '/privacy-policy';
 export const termsOfService = '/terms-of-service';
@@ -48,6 +49,5 @@ export const kqed = "https://www.kqed.org/stateofhealth/193386/mental-health-stu
 export const cnn = "https://www.cnn.com/2016/06/01/health/mental-health-therapists-race-class-bias/index.html";
 export const kugelmassLinkedIn = "https://www.linkedin.com/in/heather-kugelmass/";
 export const awsPublicDataset = 'https://registry.opendata.aws/irs990/';
-
 export const demoOrg = 'https://open990-assets.s3.amazonaws.com/demo_organizations.csv';
 

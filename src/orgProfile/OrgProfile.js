@@ -9,7 +9,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import SidebarPage from 'sidebarPage/SidebarPage';
 import { styles } from 'orgProfile/orgProfileStyles'
 import { withRouter } from 'react-router-dom';
-import apiClient from 'api';
+import apiClient from 'App/ApiClient';
 import OrgProfileHeader from "./OrgProfileHeader";
 import OrgProfileDetails from "./OrgProfileDetails";
 import OrgProfileSidebarContent from './OrgProfileSidebarContent'
@@ -31,8 +31,7 @@ class OrganizationProfile extends React.Component {
   
   componentDidMount() {
     const ein = this.props.match.params.ein;
-    let rel = `/api/org/skeleton/${ein}/`;
-    apiClient.get(rel)
+    apiClient.getOrgSkeleton(ein)
       .then(res => {
         this.setState({
           loaded: true,
@@ -55,7 +54,7 @@ class OrganizationProfile extends React.Component {
         <OrgProfileHeader content={header} />
         <OrgProfileDetails body={body} periods={periods} />
       </Fragment>);
-      const sidebarContent = <OrgProfileSidebarContent body={body} />
+      const sidebarContent = <OrgProfileSidebarContent body={body} />;
       return (<SidebarPage sidebarContent={sidebarContent} bodyContent={bodyContent} />);
     } else if (error) {
       return <div>Something went wrong</div>

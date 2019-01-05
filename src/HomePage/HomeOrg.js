@@ -6,7 +6,7 @@ import React from 'react';
 import withDynamicMeta from 'hoc/withDynamicMeta'
 import withStyles from '@material-ui/core/styles/withStyles';
 import Home from 'HomePage/Home';
-import { searchOrganizationByQuery } from 'api/search';
+import apiClient from 'App/ApiClient';
 import { orgASProps } from 'Common/autosuggestProperties'
 
 const styles = (theme) => ({});
@@ -21,7 +21,7 @@ class HomeOrg extends React.Component {
       asProps={orgASProps}
       activeTab={0}
       location = {location}
-      searchByQuery = {searchOrganizationByQuery}
+      searchByQuery = {apiClient.searchOrganizationByQuery}
     />);
   }
 }

@@ -6,8 +6,7 @@ import React from 'react';
 import withDynamicMeta from 'hoc/withDynamicMeta'
 import withStyles from '@material-ui/core/styles/withStyles';
 import SearchResults from 'searchResults/SearchResults';
-import { searchOrganizationsWithParams } from 'api/search';
-
+import apiClient from 'App/ApiClient';
 const styles = (theme) => ({});
 
 class OrgSearchResults extends React.Component {
@@ -62,7 +61,7 @@ class OrgSearchResults extends React.Component {
   
   render() {
     return (<SearchResults
-      fetchResults={searchOrganizationsWithParams}
+      fetchResults={apiClient.searchOrganizationsWithParams}
       columns={this.columns}
       renameRow={this.renameRow}
     />)

@@ -17,6 +17,7 @@ import Resources from 'Static/Resources';
 import Api from 'Static/Api';
 import Catalog from 'Static/Catalog';
 import OrgSearchResults from 'searchResults/OrgSearchResults';
+import OrgProfile from "../orgProfile/OrgProfile";
 
 import {
   root,
@@ -35,9 +36,10 @@ import {
   data,
   //searchData,
   orgSearch,
-  orgProfile
+  orgProfile,
+  orgProfileExtended
 } from 'App/routes';
-import OrgProfile from "../orgProfile/OrgProfile";
+
 
 /*
 
@@ -80,6 +82,9 @@ class SiteRouter extends React.Component {
           <Redirect to={homeOrg} />
         )} />
         <Route path={orgSearch} component={OrgSearchResults} />
+        <Route path = {orgProfileExtended} render={() => (
+          <OrgProfile  location={location}/>
+        )} />
         <Route path = {orgProfile} render={() => (
           <OrgProfile  location={location}/>
         )} />

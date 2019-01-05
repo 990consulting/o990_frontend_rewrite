@@ -4,6 +4,7 @@
 
 import React, { Component } from 'react';
 import ReactTable from 'react-table';
+import apiClient from 'App/ApiClient';
 
 class OrgDataTable extends Component {
 	constructor(props) {
@@ -16,13 +17,10 @@ class OrgDataTable extends Component {
 	}
 	
 	componentDidMount() {
-		// TODO Bring this in line with the rest of the API uses
-		let url = "http://test.preview.open990/api/org/table/" + this.props.table_id + "/";
-		fetch(url)
-			.then(res => res.json())
+		apiClient.getTableData(this.props.table_id)
 			.then(
 				(result) => {
-					let rows = result.data;
+					let rows = result.data.data;
 					this.setState({
 						isLoaded: true,
 						rows: rows
@@ -63,6 +61,7 @@ class OrgDataTable extends Component {
 	}
 	
 	createColumns() {
+		
 		const firstRow = this.state.rows[0];
 		if ("span" in firstRow) {
 			return this.createSpanColumns();

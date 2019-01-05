@@ -3,7 +3,7 @@
  */
 
 import React, {Fragment} from 'react';
-import { getPageMeta } from 'api/meta';
+import apiClient from 'App/ApiClient';
 import { Helmet } from 'react-helmet';
 
 const defaultTitle = 'Open990 - Home - free nonprofit data';
@@ -22,14 +22,15 @@ function withDynamicMeta(WrappedComponent) {
     
     setMetaInfo() {
       //console.log("Most recent URL: " + this.props.location.pathname);
-      getPageMeta(this.props.location.pathname).then(res => {
-        const { title, description, noindex } = res.data;
-        this.setState({
-          title: title,
-          description: description,
-          noIndex: noindex
-        })
-      }).catch(error => {
+      apiClient.getPageMeta(this.props.location.pathname)
+        .then(res => {
+          const { title, description, noindex } = res.data;
+          this.setState({
+            title: title,
+            description: description,
+            noIndex: noindex
+          })
+        }).catch(error => {
         console.log(`Meta not provided for ${this.props.location.pathname} route`);
         this.setState({
           defaultTitle,
@@ -38,7 +39,7 @@ function withDynamicMeta(WrappedComponent) {
         });
       });
     };
-    
+  
     componentDidMount() {
       this.setMetaInfo();
     }
