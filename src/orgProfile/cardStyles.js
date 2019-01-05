@@ -28,7 +28,7 @@ export const styles = (theme) => ({
   titleText: {
     fontFamily: theme.typography.fontFamily.heading,
     backgroundColor: theme.color.primary.desaturated,
-    padding: '0.78rem 1.8rem',
+    padding: '0.93rem 1.8rem',
     fontSize: '1.125rem',
     fontWeight: 'bold',
     fontStyle: 'normal',

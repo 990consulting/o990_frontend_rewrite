@@ -108,7 +108,7 @@ export const styles = (theme) => ({
     padding: '1rem 0 0 0'
   },
   tocItem: {
-    paddingLeft: '1.5rem'
+    paddingLeft: '20px'
   },
   tocDot: {}
 });

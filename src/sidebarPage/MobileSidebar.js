@@ -9,8 +9,6 @@ import classNames from 'classnames';
 import withViewCheck from 'hoc/withViewCheck';
 
 import withStyles from '@material-ui/core/styles/withStyles';
-import Grid from '@material-ui/core/Grid';
-import Hidden from '@material-ui/core/Hidden';
 import Dialog from '@material-ui/core/Dialog';
 import { Transition } from 'sidebarPage/SidebarTransition';
 import {styles} from 'sidebarPage/sidebarStyles';
@@ -29,11 +27,19 @@ class MobileSidebar extends React.Component {
     } = this.props;
     
     return(
-      <Hidden mdUp>
+      <div className="mobile-sidebar">
+        <div className="mobile-sidebar-button-container" onClick={toggleCollapse}>
+          <div className="mobile-sidebar-button">
+            <FontAwesomeIcon
+              icon={faBars}
+              rotation={90}
+            />
+          </div>
+        </div>
         {!collapsed && (
           <Dialog
             fullScreen
-            className={classes.dialog}
+            className={classes.dialog + ' mobile-sidebar-dialog'}
             open={!collapsed}
             TransitionComponent={Transition}
           >
@@ -48,13 +54,12 @@ class MobileSidebar extends React.Component {
             </div>
         
             <div className={classes.menu}>
-              <Grid item xs={12} className={classes.mobileHeader}>
-                <div onClick={() => scrollToTop()}>
-                  Title goes here
-                </div>
-              </Grid>
               <div
-                onClick={() => scrollToTop()}
+                onClick={(e) => {
+                  if(e.target.tagName === 'SPAN') {
+                    toggleCollapse()
+                  }
+                }}
                 className={classNames(classes.tocItem, classes.link)}
               >
                 {children}
@@ -63,7 +68,7 @@ class MobileSidebar extends React.Component {
           </Dialog>
         )
         }
-      </Hidden>
+      </div>
     )
   }
 }

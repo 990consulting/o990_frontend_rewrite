@@ -55,8 +55,10 @@ class OrganizationProfile extends React.Component {
         <OrgProfileHeader content={header} />
         <OrgProfileDetails body={body} periods={periods} />
       </Fragment>);
-      const sidebarContent = <OrgProfileSidebarContent body={body} />
-      return (<SidebarPage sidebarContent={sidebarContent} bodyContent={bodyContent} />);
+      const sidebarContent = <OrgProfileSidebarContent body={body} />;
+      return (<div id="org-profile">
+        <SidebarPage sidebarContent={sidebarContent} bodyContent={bodyContent} />
+      </div>);
     } else if (error) {
       return <div>Something went wrong</div>
     } else {
