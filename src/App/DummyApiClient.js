@@ -18,7 +18,7 @@ class DummyApiClient {
   
   getTableData(tableId) {
     return new Promise(function(resolve, reject) {
-      resolve(tables[tableId]);
+      resolve({ "data": tables[tableId]});
     })
   }
   
