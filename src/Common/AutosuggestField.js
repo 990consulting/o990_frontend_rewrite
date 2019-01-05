@@ -121,14 +121,12 @@ class AutosuggestField extends PureComponent {
     getSuggestion(value)
     .then(res => res.data)
     .then(suggestions => {
+      suggestions.push({
+        label: `See all matches for "${value}"`,
+        url: `${route}?${slug}=${value}`
+      });
       this.setState({
-        suggestions: [
-          ...suggestions,
-          {
-            label: `See all matches for "${value}"`,
-            url: `${route}?${slug}=${value}`
-          }
-        ]
+        suggestions: suggestions
       });
     });
   };

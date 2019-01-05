@@ -28,7 +28,7 @@ import LinkIcon from 'assets/external-link.svg';
 import MenuIcon from '@material-ui/icons/Menu';
 
 import { styles } from 'App/NavigationHeaderStyles';
-import { searchOrganizationByQuery } from 'api/search';
+import apiClient from 'App/ApiClient';
 import { orgASProps } from "../Common/autosuggestProperties";
 import { consulting } from 'App/routes';
 import {
@@ -39,6 +39,7 @@ import {
   catalog,
   resources
 } from 'App/routes';
+import Api from "../Static/Api";
 
 
 
@@ -57,7 +58,7 @@ class NavigationHeader extends Component {
     const { searchValue } = this.props;
     const { history } = this.props;
 
-    const searchByQuery = searchOrganizationByQuery;
+    const searchByQuery = apiClient.searchOrganizationByQuery;
 
     searchByQuery(searchValue)
       .then(res => res.data)

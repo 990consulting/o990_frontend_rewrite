@@ -17,6 +17,7 @@ import Resources from 'Static/Resources';
 import Api from 'Static/Api';
 import Catalog from 'Static/Catalog';
 import OrgSearchResults from 'searchResults/OrgSearchResults';
+import OrgProfile from "../orgProfile/OrgProfile";
 
 import {
   root,
