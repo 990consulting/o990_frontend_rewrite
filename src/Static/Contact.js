@@ -2,8 +2,8 @@
  * Copyright (c) 2018 990 Consulting, LLC. All rights reserved.
  */
 
-import React from 'react';
-import withDynamicMeta from 'hoc/withDynamicMeta'
+import React, { Fragment } from 'react';
+import { Helmet } from 'react-helmet';
 
 import withStyles from '@material-ui/core/styles/withStyles';
 import Grid from '@material-ui/core/Grid';
@@ -88,7 +88,7 @@ const styles = (theme) => ({
     maxWidth: '42rem',
     textAlign: 'center',
     margin: '1.875rem auto 0 auto',
-
+    
   },
   foundersProfile: {
     padding: '0 5rem',
@@ -108,7 +108,7 @@ const styles = (theme) => ({
       margin: '0.5rem 0 1.875rem 0',
       fontSize: '1rem',
       fontFamily: theme.typography.fontFamily.main,
-
+      
     },
     '& h4': {
       margin: '1.25rem 0 0.3125rem 0',
@@ -157,124 +157,131 @@ const styles = (theme) => ({
 });
 
 const Contact = ({
-    classes, 
-  }) => {
+                   classes,
+                 }) => {
   return (
-    <div className={classNames(
-      'ContactPage',
-      classes.root
-    )}>
-      <MaxContainer classes={{ container: classes.container }}>
-        <Grid item xs={12}>
-          <Grid container>
-            <Grid item xs={12}>
-              <Grid container justify="center">
-                <Grid item xs={12} md={10} className={classes.policyHeader}>
-                  <h1>Contact us</h1>
-                </Grid>
-                <Grid item xs={12} className={classes.headingContent}>
-                  <a href={mail}>
-                    info@open990.com
-                  </a>
-                  <p className={classes.textContent}>We're happy to answer questions about e-filed nonprofit tax returns and
-                    the AWS Open IRS 990 dataset, or
-                    to
-                    provide information about our 990 data analysis services.
-                  </p>
+    <Fragment>
+      <Helmet>
+        <title>Contact Open990</title>
+        <meta name="description" content="Contact us with questions about available data on nonprofit organizations and their officers." />
+        <meta name="robots" content="all"/>
+      </Helmet>
+      <div className={classNames(
+        'ContactPage',
+        classes.root
+      )}>
+        <MaxContainer classes={{ container: classes.container }}>
+          <Grid item xs={12}>
+            <Grid container>
+              <Grid item xs={12}>
+                <Grid container justify="center">
+                  <Grid item xs={12} md={10} className={classes.policyHeader}>
+                    <h1>Contact us</h1>
+                  </Grid>
+                  <Grid item xs={12} className={classes.headingContent}>
+                    <a href={mail}>
+                      info@open990.com
+                    </a>
+                    <p className={classes.textContent}>We're happy to answer questions about e-filed nonprofit tax returns and
+                      the AWS Open IRS 990 dataset, or
+                      to
+                      provide information about our 990 data analysis services.
+                    </p>
+                  </Grid>
                 </Grid>
               </Grid>
-            </Grid>
-
-            <Grid item xs={12}>
-              <Grid container justify="center">
-                <Grid item xs={12} md={10} className={classes.policyHeader}>
-                  <h1>Our founders</h1>
-                </Grid>
-                <Grid item xs={12} md={5}>
-                  <div className={classes.staticMainContent}>
-                    <div className={classes.foundersProfile}>
-                      <img src={borenstein} alt="borenstein"/>
-                      <h4>David Bruce Borenstein, Ph.D.</h4>
-                      <span>Chief Data Scientist</span>
-                      <p>David is an expert in nonprofit data science. Formerly the Director of Data
-                        Science at <a href={charitynavigator}>Charity Navigator</a>, he created
-                        open-source <a href={charitynavigatorNineHundr}>software</a> to turn the IRS Form 990 into
-                        spreadsheets.
-                        He
-                        formed <a href={consulting}>990 Consulting</a> and its sister site, <a
-                          href={root}>open990.com</a>, to increase awareness and access to this
-                        remarkable
-                        dataset. Prior to Charity Navigator, he worked as a computational biologist at the <a
-                          href={broadinstitute}>Broad Institute of MIT and Harvard</a>. He holds a Ph.D.
-                        in
-                        Quantitative and Computational Biology from <a
-                          href={princeton}>Princeton
-                          University.</a></p>
-
-                      <div>
-                        <a href={borensteinGit}>
-                          <div className={classes.brandIcon}>
-                            <FontAwesomeIcon icon={faGit}/>
-                          </div>
-                        </a>
-                        <a href={borensteinLinkedIn}>
-                          <div className={classes.brandIcon}>
-                            <FontAwesomeIcon icon={faLinkedin}/>
-                          </div>
-                        </a>
-                        <a href={davidMail}>
-                          <div className={classes.brandIcon}>
-                            <FontAwesomeIcon icon={faEnvelope}/>
-                          </div>
-                        </a>
+              
+              <Grid item xs={12}>
+                <Grid container justify="center">
+                  <Grid item xs={12} md={10} className={classes.policyHeader}>
+                    <h1>Our founders</h1>
+                  </Grid>
+                  <Grid item xs={12} md={5}>
+                    <div className={classes.staticMainContent}>
+                      <div className={classes.foundersProfile}>
+                        <img src={borenstein} alt="borenstein"/>
+                        <h4>David Bruce Borenstein, Ph.D.</h4>
+                        <span>Chief Data Scientist</span>
+                        <p>David is an expert in nonprofit data science. Formerly the Director of Data
+                          Science at <a href={charitynavigator}>Charity Navigator</a>, he created
+                          open-source <a href={charitynavigatorNineHundr}>software</a> to turn the IRS Form 990 into
+                          spreadsheets.
+                          He
+                          formed <a href={consulting}>990 Consulting</a> and its sister site, <a
+                            href={root}>open990.com</a>, to increase awareness and access to this
+                          remarkable
+                          dataset. Prior to Charity Navigator, he worked as a computational biologist at the <a
+                            href={broadinstitute}>Broad Institute of MIT and Harvard</a>. He holds a Ph.D.
+                          in
+                          Quantitative and Computational Biology from <a
+                            href={princeton}>Princeton
+                            University.</a></p>
+                        
+                        <div>
+                          <a href={borensteinGit}>
+                            <div className={classes.brandIcon}>
+                              <FontAwesomeIcon icon={faGit}/>
+                            </div>
+                          </a>
+                          <a href={borensteinLinkedIn}>
+                            <div className={classes.brandIcon}>
+                              <FontAwesomeIcon icon={faLinkedin}/>
+                            </div>
+                          </a>
+                          <a href={davidMail}>
+                            <div className={classes.brandIcon}>
+                              <FontAwesomeIcon icon={faEnvelope}/>
+                            </div>
+                          </a>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </Grid>
-
-                <Grid item xs={12} md={5}>
-                  <div className={classes.staticMainContent}>
-                    <div className={classes.foundersProfile}>
-                      <img src={kugelmass} alt="kugelmass"/>
-                      <h4>Heather Kugelmass, Ph.D.</h4>
-                      <span>Director of Research Operations</span>
-                      <p>Heather earned a Ph.D. in Sociology from Princeton University, where she was
-                        a research affiliate of the Center for the Study of Social Organization and a graduate student
-                        fellow of the Woodrow Wilson Scholars. Prior to her doctoral work, she was a program manager at a
-                        nonprofit that provides assessment tools to colleges. Her research has been featured by&nbsp;
-                        <a
-                          href={theatlantic}>The
-                          Atlantic</a>,&nbsp;
-                        <a
-                          href={kqed}>NPR</a>,&nbsp;
-                        <a
-                          href={cnn}>CNN</a>,
-                        and other media outlets. She earned an M.A. in Quantitative Methods in the Social Sciences from
-                        Columbia University.</p>
-
-                      <div>
-                        <a href={kugelmassLinkedIn}>
-                          <div className={classes.brandIcon}>
-                            <FontAwesomeIcon icon={faLinkedin}/>
-                          </div>
-                        </a>
-                        <a href={heatherMail}>
-                          <div className={classes.brandIcon}>
-                            <FontAwesomeIcon icon={faEnvelope}/>
-                          </div>
-                        </a>
+                  </Grid>
+                  
+                  <Grid item xs={12} md={5}>
+                    <div className={classes.staticMainContent}>
+                      <div className={classes.foundersProfile}>
+                        <img src={kugelmass} alt="kugelmass"/>
+                        <h4>Heather Kugelmass, Ph.D.</h4>
+                        <span>Director of Research Operations</span>
+                        <p>Heather earned a Ph.D. in Sociology from Princeton University, where she was
+                          a research affiliate of the Center for the Study of Social Organization and a graduate student
+                          fellow of the Woodrow Wilson Scholars. Prior to her doctoral work, she was a program manager at a
+                          nonprofit that provides assessment tools to colleges. Her research has been featured by&nbsp;
+                          <a
+                            href={theatlantic}>The
+                            Atlantic</a>,&nbsp;
+                          <a
+                            href={kqed}>NPR</a>,&nbsp;
+                          <a
+                            href={cnn}>CNN</a>,
+                          and other media outlets. She earned an M.A. in Quantitative Methods in the Social Sciences from
+                          Columbia University.</p>
+                        
+                        <div>
+                          <a href={kugelmassLinkedIn}>
+                            <div className={classes.brandIcon}>
+                              <FontAwesomeIcon icon={faLinkedin}/>
+                            </div>
+                          </a>
+                          <a href={heatherMail}>
+                            <div className={classes.brandIcon}>
+                              <FontAwesomeIcon icon={faEnvelope}/>
+                            </div>
+                          </a>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </Grid>
                 </Grid>
               </Grid>
             </Grid>
           </Grid>
-        </Grid>
-      </MaxContainer>
-    </div>
+        </MaxContainer>
+      </div>
+    </Fragment>
   )
 };
 
-export default withDynamicMeta(withStyles(styles)(Contact));
+export default withStyles(styles)(Contact);
 

@@ -2,8 +2,9 @@
  * Copyright (c) 2018 990 Consulting, LLC. All rights reserved.
  */
 
-import React from 'react';
-import withDynamicMeta from 'hoc/withDynamicMeta'
+import React, { Fragment } from 'react';
+import { Helmet } from 'react-helmet';
+
 import classNames from 'classnames';
 
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -126,118 +127,125 @@ const styles = (theme) => ({
 });
 
 const CustomData = ({
-    classes,
-  }) => {
+                      classes,
+                    }) => {
   return (
-    <div className={classes.root}>
-      <MaxContainer>
-        <Grid container className={classes.staticMainContent} justify="center">
-          <Grid item xs={12} md={10} className={classes.underlinedHeader}>
-            <h3>IRS nonprofit data <span>•</span> 1.8 million organizations <span>•</span> 5.9 million filings</h3>
-          </Grid>
-          <Grid item xs={12} md={10} className={classes.lineText}>
-            <p>Researchers and nonprofit professionals may wish to purchase custom datasets that include variables
-              displayed on Open990 or hundreds of other variables from the suite of IRS Forms 990.</p>
-          </Grid>
-          <Grid item xs={12} sm={8} md={10} className={classes.iconCardRibbon}>
-            <Grid container spacing={24}>
-              <Grid item xs={12} md={4}>
-                <IconCard
-                  classes={{
-                    extendedPaper: classes.paper
-                  }}
-                  icon={faFilter}
-                  text={'Apply simple data filters so that you pay only for organizations that meet your criteria'}
-                />
-              </Grid>
-              <Grid item xs={12} md={4}>
-                <IconCard
-                  classes={{
-                    extendedPaper: classes.paper
-                  }}
-                  icon={faCogs}
-                  text={'Supply data from Forms 990 (core), EZ, PF, and most schedules, e-filed in 2011 – present'}
-                />
-              </Grid>
-              <Grid item xs={12} md={4}>
-                <IconCard
-                  classes={{
-                    extendedPaper: classes.paper
-                  }}
-                  icon={faDownload}
-                  text={'Provide the custom extract in .json (hierarchical) or .csv (flat) format'}
-                />
+    <Fragment>
+      <Helmet>
+        <title>Nonprofit Custom Datasets | Open990</title>
+        <meta name="description" content="For researchers, nonprofit professionals, grantmakers. Analyze current and historical information about nonprofits. Choose from hundreds of variables." />
+        <meta name="robots" content="all"/>
+      </Helmet>
+      <div className={classes.root}>
+        <MaxContainer>
+          <Grid container className={classes.staticMainContent} justify="center">
+            <Grid item xs={12} md={10} className={classes.underlinedHeader}>
+              <h3>IRS nonprofit data <span>•</span> 1.8 million organizations <span>•</span> 5.9 million filings</h3>
+            </Grid>
+            <Grid item xs={12} md={10} className={classes.lineText}>
+              <p>Researchers and nonprofit professionals may wish to purchase custom datasets that include variables
+                displayed on Open990 or hundreds of other variables from the suite of IRS Forms 990.</p>
+            </Grid>
+            <Grid item xs={12} sm={8} md={10} className={classes.iconCardRibbon}>
+              <Grid container spacing={24}>
+                <Grid item xs={12} md={4}>
+                  <IconCard
+                    classes={{
+                      extendedPaper: classes.paper
+                    }}
+                    icon={faFilter}
+                    text={'Apply simple data filters so that you pay only for organizations that meet your criteria'}
+                  />
+                </Grid>
+                <Grid item xs={12} md={4}>
+                  <IconCard
+                    classes={{
+                      extendedPaper: classes.paper
+                    }}
+                    icon={faCogs}
+                    text={'Supply data from Forms 990 (core), EZ, PF, and most schedules, e-filed in 2011 – present'}
+                  />
+                </Grid>
+                <Grid item xs={12} md={4}>
+                  <IconCard
+                    classes={{
+                      extendedPaper: classes.paper
+                    }}
+                    icon={faDownload}
+                    text={'Provide the custom extract in .json (hierarchical) or .csv (flat) format'}
+                  />
+                </Grid>
               </Grid>
             </Grid>
-          </Grid>
-          <Grid item xs={12} md={10} className={classes.lineText}>
-            <p>The most data are available for organizations that file tax returns electronically, but some data (e.g.,
-              total assets, NTEE codes) are available for organizations that paper-file 990s too.</p>
-          </Grid>
-          <Grid item xs={12} md={10} className={classNames(classes.lineHeader, classes.newLineHeader)}>
-            <h1>Identify trends</h1>
-          </Grid>
-          <Grid item xs={12} md={10} className={classes.lineText}>
-            <p>We track over 350 dimensions on tax-exempt organizations from 2010 to present. Our proprietary records
-              linkage algorithm identifies amounts spent on individual people and programs over time – even if they are
-              written differently on each tax return. This reveals trends in executive compensation, program expenses,
-              program revenues, and more.</p>
-          </Grid>
-          <Grid item sm={10}>
-            <Grid container>
-              <Grid item xs={12} className={classes.lineHeader}>
-                <h1>Our process</h1>
-              </Grid>
-              <Grid item xs={12} className={classes.listBlock}>
-                <Grid container>
-                  <Grid item xs={12} md={4} className={classes.numberedListItem}>
-                    <Grid container>
-                      <Grid item xs={2} className={classes.listNumber}>
-                        1.
-                      </Grid>
-                      <Grid item xs={10}>
-                        <Grid container>
-                          <Grid item xs={12} md={10} className={classes.listTitle}>
-                            Simplify structure
-                          </Grid>
-                          <Grid item xs={12} md={10} className={classes.listText}>
-                            Our data scientists compare tax forms to bring together related variables.
+            <Grid item xs={12} md={10} className={classes.lineText}>
+              <p>The most data are available for organizations that file tax returns electronically, but some data (e.g.,
+                total assets, NTEE codes) are available for organizations that paper-file 990s too.</p>
+            </Grid>
+            <Grid item xs={12} md={10} className={classNames(classes.lineHeader, classes.newLineHeader)}>
+              <h1>Identify trends</h1>
+            </Grid>
+            <Grid item xs={12} md={10} className={classes.lineText}>
+              <p>We track over 350 dimensions on tax-exempt organizations from 2010 to present. Our proprietary records
+                linkage algorithm identifies amounts spent on individual people and programs over time – even if they are
+                written differently on each tax return. This reveals trends in executive compensation, program expenses,
+                program revenues, and more.</p>
+            </Grid>
+            <Grid item sm={10}>
+              <Grid container>
+                <Grid item xs={12} className={classes.lineHeader}>
+                  <h1>Our process</h1>
+                </Grid>
+                <Grid item xs={12} className={classes.listBlock}>
+                  <Grid container>
+                    <Grid item xs={12} md={4} className={classes.numberedListItem}>
+                      <Grid container>
+                        <Grid item xs={2} className={classes.listNumber}>
+                          1.
+                        </Grid>
+                        <Grid item xs={10}>
+                          <Grid container>
+                            <Grid item xs={12} md={10} className={classes.listTitle}>
+                              Simplify structure
+                            </Grid>
+                            <Grid item xs={12} md={10} className={classes.listText}>
+                              Our data scientists compare tax forms to bring together related variables.
+                            </Grid>
                           </Grid>
                         </Grid>
                       </Grid>
                     </Grid>
-                  </Grid>
-                  <Grid item xs={12} md={4} className={classes.numberedListItem}>
-                    <Grid container>
-                      <Grid item xs={2} className={classes.listNumber}>
-                        2.
-                      </Grid>
-                      <Grid item xs={10}>
-                        <Grid container>
-                          <Grid item xs={12} md={10} className={classes.listTitle}>
-                            Match across years
-                          </Grid>
-                          <Grid item xs={12} md={10} className={classes.listText}>
-                            Our technology links records on individuals and programs, even if they are written
-                            slightly
-                            differently each year.
+                    <Grid item xs={12} md={4} className={classes.numberedListItem}>
+                      <Grid container>
+                        <Grid item xs={2} className={classes.listNumber}>
+                          2.
+                        </Grid>
+                        <Grid item xs={10}>
+                          <Grid container>
+                            <Grid item xs={12} md={10} className={classes.listTitle}>
+                              Match across years
+                            </Grid>
+                            <Grid item xs={12} md={10} className={classes.listText}>
+                              Our technology links records on individuals and programs, even if they are written
+                              slightly
+                              differently each year.
+                            </Grid>
                           </Grid>
                         </Grid>
                       </Grid>
                     </Grid>
-                  </Grid>
-                  <Grid item xs={12} md={4} className={classes.numberedListItem}>
-                    <Grid container>
-                      <Grid item xs={2} className={classes.listNumber}>
-                        3.
-                      </Grid>
-                      <Grid item xs={10}>
-                        <Grid container>
-                          <Grid item xs={12} md={10} className={classes.listTitle}>
-                            Derive new variables
-                          </Grid>
-                          <Grid item xs={12} md={10} className={classes.listText}>
-                            We compute new variables to add to the dataset, e.g., fundraising efficiency.
+                    <Grid item xs={12} md={4} className={classes.numberedListItem}>
+                      <Grid container>
+                        <Grid item xs={2} className={classes.listNumber}>
+                          3.
+                        </Grid>
+                        <Grid item xs={10}>
+                          <Grid container>
+                            <Grid item xs={12} md={10} className={classes.listTitle}>
+                              Derive new variables
+                            </Grid>
+                            <Grid item xs={12} md={10} className={classes.listText}>
+                              We compute new variables to add to the dataset, e.g., fundraising efficiency.
+                            </Grid>
                           </Grid>
                         </Grid>
                       </Grid>
@@ -246,25 +254,25 @@ const CustomData = ({
                 </Grid>
               </Grid>
             </Grid>
+            <Grid item xs={12} md={10} className={classes.lineText}>
+              <p>Data sources include IRS Forms 990, 990-PF, 990-EZ, schedules, IRS Business Master File, and National
+                Center for Charitable Statistics. Custom datasets start at $900. Academic discounts are available.</p>
+            </Grid>
+            <Grid item xs={12} md={10}>
+              <ContactForm
+                classes={{
+                  extendedForm: classes.contactForm
+                }}
+                headerText={'Interested in using nonprofit financial data in your work?'}
+                subHeaderText={'Contact us to discuss your goals.'}
+                direction={'row'}/>
+            </Grid>
           </Grid>
-          <Grid item xs={12} md={10} className={classes.lineText}>
-            <p>Data sources include IRS Forms 990, 990-PF, 990-EZ, schedules, IRS Business Master File, and National
-              Center for Charitable Statistics. Custom datasets start at $900. Academic discounts are available.</p>
-          </Grid>
-          <Grid item xs={12} md={10}>
-            <ContactForm
-              classes={{
-                extendedForm: classes.contactForm
-              }}
-              headerText={'Interested in using nonprofit financial data in your work?'}
-              subHeaderText={'Contact us to discuss your goals.'}
-              direction={'row'}/>
-          </Grid>
-        </Grid>
-      </MaxContainer>
-    </div>
+        </MaxContainer>
+      </div>
+    </Fragment>
   )
 };
 
-export default withDynamicMeta(withStyles(styles)(CustomData));
+export default withStyles(styles)(CustomData);
 

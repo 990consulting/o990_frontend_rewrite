@@ -3,7 +3,6 @@
  */
 
 import React from 'react';
-import withDynamicMeta from 'hoc/withDynamicMeta'
 import withStyles from '@material-ui/core/styles/withStyles';
 import Home from 'HomePage/Home';
 import apiClient from 'App/ApiClient';
@@ -26,4 +25,4 @@ class HomeOrg extends React.Component {
   }
 }
 
-export default withDynamicMeta(withStyles(styles)(HomeOrg));
+export default withStyles(styles)(HomeOrg);

@@ -2,8 +2,9 @@
  * Copyright (c) 2018 990 Consulting, LLC. All rights reserved.
  */
 
-import React from 'react';
-import withDynamicMeta from 'hoc/withDynamicMeta'
+import React, { Fragment } from 'react';
+import { Helmet } from 'react-helmet';
+
 import classNames from 'classnames';
 
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -29,18 +30,25 @@ const Api = ({
      classes,
    }) => {
   return (
-    <div className={classNames("Api", classes.root)}>
-      <MaxContainer classes={{container: classes.container}}>
-        <Grid item xs={12}>
-          <Grid container justify="center">
-            <Grid item xs={12} md={10} className={classes.defaultText}>
-              <h1>We are currently in the process of updating our API offerings. <br/> Please check back soon!</h1>
+    <Fragment>
+      <Helmet>
+        <title>Open990 &ndash; Free and paid APIs</title>
+        <meta name="description" content="Display nonprofit data on your own website with selected data fields retrieved on demand. Free and paid options available." />
+        <meta name="robots" content="all"/>
+      </Helmet>
+      <div className={classNames("Api", classes.root)}>
+        <MaxContainer classes={{container: classes.container}}>
+          <Grid item xs={12}>
+            <Grid container justify="center">
+              <Grid item xs={12} md={10} className={classes.defaultText}>
+                <h1>We are currently in the process of updating our API offerings. <br/> Please check back soon!</h1>
+              </Grid>
             </Grid>
           </Grid>
-        </Grid>
-      </MaxContainer>
-    </div>
+        </MaxContainer>
+      </div>
+    </Fragment>
   )
 };
 
-export default withDynamicMeta(withStyles(styles)(Api));
+export default withStyles(styles)(Api);

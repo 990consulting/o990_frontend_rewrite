@@ -2,9 +2,10 @@
  * Copyright (c) 2018 990 Consulting, LLC. All rights reserved.
  */
 
-import React, { Component } from 'react';
+import React, { Fragment } from 'react';
+import { Helmet } from 'react-helmet';
+
 import { withRouter } from 'react-router-dom';
-import withDynamicMeta from 'hoc/withDynamicMeta'
 import classNames from 'classnames';
 
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -162,12 +163,12 @@ const formOptions = [
   }
 ];
 
-class Resources extends Component {
+class Resources extends React.Component {
   state = {
     form: formOptions[0].value,
     terms: ''
   };
-
+  
   setValue = (field) => (event) => {
     const value = event.target.value;
     this.setState({
@@ -175,7 +176,7 @@ class Resources extends Component {
       [field]: value
     })
   };
-
+  
   onSearchSubmit = (event) => {
     event.preventDefault();
     const {history} = this.props;
@@ -183,204 +184,211 @@ class Resources extends Component {
     const url = `${searchData}?${terms && `field=${terms}`}${form && `&form=${form}`}`;
     history.push(url);
   };
-
+  
   render() {
     const {
       classes,
     } = this.props;
-
+    
     const {
       terms,
       form
     } = this.state;
-
+    
     return (
-      <div className={classNames(
-        'ResourcesPage',
-        classes.root
-      )}>
-        <MaxContainer>
-          <Grid item xs={12}>
-            <Grid container justify="center">
-              <Grid item xs={12} md={8}>
-                <div className={classes.lineHeader}>
-                  <h1>Explore 990 variables</h1>
-                </div>
-                <p className={classes.bodyText}>
-                  The Form 990 e-filed data were first made available in 2016 via the <a href={awsPublicDataset}
-                                                                                        rel="nofollow">Amazon
-                  Web Services Public Dataset program</a> as individual representations of each e-file in XML format. The
-                  data files made available here were constructed from those XML files and consist of individual
-                  spreadsheets for each of the variables in the data–7,256 in all. They are part of community efforts to
-                  make these data more accessible and are available here for free download.
-                </p>
-              </Grid>
-              <Grid item xs={12} md={8}>
-                <form onSubmit={this.onSearchSubmit}>
-                  <Grid container>
-                    <Grid item xs={9}>
-                      <TextField
-                        label={'Terms'}
-                        onChange={this.setValue('terms')}
-                        value={terms}
-                        classes={{
-                          root: classes.textField
-                        }}
-                        placeholder={'Description or line number'}
-                        fullWidth
-                        margin="normal"
-                        variant="outlined"
-                        InputLabelProps={{
-                          shrink: true,
-                        }}
-                      />
+      <Fragment>
+        <Helmet>
+          <title>Tax-exempt Organization Data – Free resources from IRS data | Open990</title>
+          <meta name="description" content="Hundreds of data fields available for download to those researching nonprofit finances. Explore other free resources from IRS 990 data for donors, researchers, and consultants."/>
+          <meta name="robots" content="all"/>
+        </Helmet>
+        <div className={classNames(
+          'ResourcesPage',
+          classes.root
+        )}>
+          <MaxContainer>
+            <Grid item xs={12}>
+              <Grid container justify="center">
+                <Grid item xs={12} md={8}>
+                  <div className={classes.lineHeader}>
+                    <h1>Explore 990 variables</h1>
+                  </div>
+                  <p className={classes.bodyText}>
+                    The Form 990 e-filed data were first made available in 2016 via the <a href={awsPublicDataset}
+                                                                                           rel="nofollow">Amazon
+                    Web Services Public Dataset program</a> as individual representations of each e-file in XML format. The
+                    data files made available here were constructed from those XML files and consist of individual
+                    spreadsheets for each of the variables in the data–7,256 in all. They are part of community efforts to
+                    make these data more accessible and are available here for free download.
+                  </p>
+                </Grid>
+                <Grid item xs={12} md={8}>
+                  <form onSubmit={this.onSearchSubmit}>
+                    <Grid container>
+                      <Grid item xs={9}>
+                        <TextField
+                          label={'Terms'}
+                          onChange={this.setValue('terms')}
+                          value={terms}
+                          classes={{
+                            root: classes.textField
+                          }}
+                          placeholder={'Description or line number'}
+                          fullWidth
+                          margin="normal"
+                          variant="outlined"
+                          InputLabelProps={{
+                            shrink: true,
+                          }}
+                        />
+                      </Grid>
+                      <Grid item xs={3}>
+                        <TextField
+                          label={'Form'}
+                          placeholder={'Any'}
+                          onChange={this.setValue('form')}
+                          value={form}
+                          fullWidth
+                          margin="normal"
+                          variant="outlined"
+                          select
+                          SelectProps={{
+                            native: true
+                          }}
+                          InputLabelProps={{
+                            shrink: true
+                          }}
+                        >
+                          {formOptions.map(option => (
+                            <option value={option.value} key={option.value}>
+                              {option.label}
+                            </option>
+                          ))}
+                        </TextField>
+                      </Grid>
                     </Grid>
-                    <Grid item xs={3}>
-                      <TextField
-                        label={'Form'}
-                        placeholder={'Any'}
-                        onChange={this.setValue('form')}
-                        value={form}
-                        fullWidth
-                        margin="normal"
-                        variant="outlined"
-                        select
-                        SelectProps={{
-                          native: true
-                        }}
-                        InputLabelProps={{
-                          shrink: true
-                        }}
-                      >
-                        {formOptions.map(option => (
-                          <option value={option.value} key={option.value}>
-                            {option.label}
-                          </option>
-                        ))}
-                      </TextField>
+                  </form>
+                </Grid>
+                <Grid item xs={12} md={8}>
+                  <Button
+                    className={classes.button}
+                    onClick={this.onSearchSubmit}
+                    disabled={!terms}
+                  >
+                    {'Search'}
+                  </Button>
+                </Grid>
+                <Grid item xs={12} md={8}>
+                  <p className={classes.bodyText}>
+                    Open990 improves data usability and interpretability beyond this by mapping variables across form
+                    types and years.
+                  </p>
+                  <div className={classes.lineHeader}>
+                    <h1>Additional Free Resources</h1>
+                  </div>
+                </Grid>
+                <Grid item xs={12} md={8} className={classes.textGrid}>
+                  <Grid container spacing={16}>
+                    <Grid item xs={5}>
+                      <h3>Third-party Tools</h3>
+                      <p>
+                        <a
+                          href="https://projects.propublica.org/nonprofits/"
+                          rel="nofollow"
+                        >
+                          ProPublica’s Nonprofit Explorer
+                        </a>
+                      </p>
+                      <p>
+                        <a
+                          href="https://www.opensecrets.org/dark-money/explore-our-reports"
+                          rel="nofollow"
+                        >
+                          OpenSecrets.org’s Nonprofit Data Search
+                        </a>
+                      </p>
+                      <p>
+                        <a
+                          href="https://nonprofits.sevendaysvt.com"
+                          rel="nofollow"
+                        >
+                          Vermont Nonprofit Navigator
+                        </a>
+                      </p>
+                      <p>
+                        <a
+                          href="https://docs.opendata.aws/irs-990/readme.html"
+                          rel="nofollow"
+                        >
+                          Machine-readable filings on AWS
+                        </a>
+                      </p>
                     </Grid>
-                  </Grid>
-                </form>
-              </Grid>
-              <Grid item xs={12} md={8}>
-                <Button
-                  className={classes.button}
-                  onClick={this.onSearchSubmit}
-                  disabled={!terms}
-                >
-                  {'Search'}
-                </Button>
-              </Grid>
-              <Grid item xs={12} md={8}>
-                <p className={classes.bodyText}>
-                  Open990 improves data usability and interpretability beyond this by mapping variables across form
-                  types and years.
-                </p>
-                <div className={classes.lineHeader}>
-                  <h1>Additional Free Resources</h1>
-                </div>
-              </Grid>
-              <Grid item xs={12} md={8} className={classes.textGrid}>
-                <Grid container spacing={16}>
-                  <Grid item xs={5}>
-                    <h3>Third-party Tools</h3>
-                    <p>
-                      <a
-                        href="https://projects.propublica.org/nonprofits/"
-                        rel="nofollow"
-                      >
-                        ProPublica’s Nonprofit Explorer
-                      </a>
-                    </p>
-                    <p>
-                      <a
-                        href="https://www.opensecrets.org/dark-money/explore-our-reports"
-                        rel="nofollow"
-                      >
-                        OpenSecrets.org’s Nonprofit Data Search
-                      </a>
-                    </p>
-                    <p>
-                      <a
-                        href="https://nonprofits.sevendaysvt.com"
-                        rel="nofollow"
-                      >
-                        Vermont Nonprofit Navigator
-                      </a>
-                    </p>
-                    <p>
-                      <a
-                        href="https://docs.opendata.aws/irs-990/readme.html"
-                        rel="nofollow"
-                      >
-                        Machine-readable filings on AWS
-                      </a>
-                    </p>
-                  </Grid>
-                  <Grid item xs={2} className={classes.dividerWrapper}>
-                    <div className={classes.divider}/>
-                  </Grid>
-                  <Grid item xs={5}>
-                    <h3>IRS Resources</h3>
-                    <p>
-                      <a
-                        href="https://www.irs.gov/pub/irs-prior/f990--2017.pdf"
-                        rel="nofollow"
-                      >
-                        Form 990 (2017)
-                      </a>
-                    </p>
-                    <p>
-                      <a
-                        href="https://www.irs.gov/pub/irs-prior/i990--2017.pdf"
-                        rel="nofollow"
-                      >
-                        Instructions Form 990 (2017)
-                      </a>
-                    </p>
-                    <p>
-                      <a
-                        href="https://www.irs.gov/pub/irs-prior/f990ez--2017.pdf"
-                        rel="nofollow"
-                      >
-                        Form 990-EZ (2017)
-                      </a>
-                    </p>
-                    <p>
-                      <a
-                        href="https://www.irs.gov/pub/irs-prior/i990ez--2017.pdf"
-                        rel="nofollow"
-                      >
-                        Instructions Form 990-EZ (2017)
-                      </a>
-                    </p>
-                    <p>
-                      <a
-                        href="https://www.irs.gov/pub/irs-prior/f990pf--2017.pdf"
-                        rel="nofollow"
-                      >
-                        Form 990-PF (2017)
-                      </a>
-                    </p>
-                    <p>
-                      <a
-                        href="https://www.irs.gov/pub/irs-prior/i990pf--2017.pdf"
-                        rel="nofollow"
-                      >
-                        Instructions Form 990-PF (2017)
-                      </a>
-                    </p>
+                    <Grid item xs={2} className={classes.dividerWrapper}>
+                      <div className={classes.divider}/>
+                    </Grid>
+                    <Grid item xs={5}>
+                      <h3>IRS Resources</h3>
+                      <p>
+                        <a
+                          href="https://www.irs.gov/pub/irs-prior/f990--2017.pdf"
+                          rel="nofollow"
+                        >
+                          Form 990 (2017)
+                        </a>
+                      </p>
+                      <p>
+                        <a
+                          href="https://www.irs.gov/pub/irs-prior/i990--2017.pdf"
+                          rel="nofollow"
+                        >
+                          Instructions Form 990 (2017)
+                        </a>
+                      </p>
+                      <p>
+                        <a
+                          href="https://www.irs.gov/pub/irs-prior/f990ez--2017.pdf"
+                          rel="nofollow"
+                        >
+                          Form 990-EZ (2017)
+                        </a>
+                      </p>
+                      <p>
+                        <a
+                          href="https://www.irs.gov/pub/irs-prior/i990ez--2017.pdf"
+                          rel="nofollow"
+                        >
+                          Instructions Form 990-EZ (2017)
+                        </a>
+                      </p>
+                      <p>
+                        <a
+                          href="https://www.irs.gov/pub/irs-prior/f990pf--2017.pdf"
+                          rel="nofollow"
+                        >
+                          Form 990-PF (2017)
+                        </a>
+                      </p>
+                      <p>
+                        <a
+                          href="https://www.irs.gov/pub/irs-prior/i990pf--2017.pdf"
+                          rel="nofollow"
+                        >
+                          Instructions Form 990-PF (2017)
+                        </a>
+                      </p>
+                    </Grid>
                   </Grid>
                 </Grid>
               </Grid>
             </Grid>
-          </Grid>
-        </MaxContainer>
-      </div>
+          </MaxContainer>
+        </div>
+      </Fragment>
     )
   }
 }
 
 
-export default withDynamicMeta(withStyles(styles)(withRouter(Resources)));
+export default withStyles(styles)(withRouter(Resources));
 

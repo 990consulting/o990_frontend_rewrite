@@ -2,8 +2,8 @@
  * Copyright (c) 2018 990 Consulting, LLC. All rights reserved.
  */
 
-import React from 'react';
-import withDynamicMeta from 'hoc/withDynamicMeta'
+import React, { Fragment } from 'react';
+import { Helmet } from 'react-helmet';
 
 import withStyles from '@material-ui/core/styles/withStyles';
 import Grid from '@material-ui/core/Grid';
@@ -98,93 +98,100 @@ const styles = (theme) => ({
 });
 
 const Benchmark = ({
- classes,
-}) => {
+                     classes,
+                   }) => {
   return (
-    <div className={classes.root}>
-      <MaxContainer>
-        <Grid 
-          container 
-          justify="center" 
-          spacing={24} 
-        >
-          <Grid item xs={12} md={7}>
-            <Grid container spacing={24}>
-              <Grid item xs={12} sm={5}>
-                <ContactForm
-                  subHeaderText={"Discuss your project"}
-                  direction={'column'}/>
-              </Grid>
-              <Grid item xs={12} sm={7} className={classes.heading}>
-                <h1>
-                  Your organization's financial health over time, compared to the right
-                  peers.
-                </h1>
-                <h2>
-                  Custom benchmark reports and analysis for strategy, outreach, and risk assessment.
-                </h2>
-              </Grid>
-              <Grid item md={12}>
-                <div className={classes.secondaryHeader}>
-                  <h3>Metrics</h3>
-                </div>
-                <p className={classes.secondaryParagraph}>
-                  Customize your report by selecting among dozens of metrics —
-                  operating liquidity, fundraising efficiency, compensation spending, and more. We provide a
-                  snapshot of your finances using visuals, as well as the underlying data for your further
-                  analysis.
-                </p>
-                <div className={classes.secondaryHeader}>
-                  <h3>Comparison groups</h3>
-                </div>
-                <p className={classes.secondaryParagraph}>
-                  Compare your organization to peers chosen on the criteria that
-                  matter to you: cause area (NTEE), size, geography, and more. You also have the option of using
-                  our cutting-edge Deep Comparables model to develop a peer set uniquely relevant to your
-                  organization’s mission and services.
-                </p>
-              </Grid>
-            </Grid>
-          </Grid>
-          <Grid item sm={12} md={3}>
-            <Grid container>
-              <Grid item xs={12} sm={6} md={12}>
-                <a href="https://open990-assets.s3.amazonaws.com/pdf/990Consulting_ReportPreview.pdf">
-                  <img
-                    className={classes.image}
-                    src={thumbnail1}
-                    alt="Open990 Benchmark Preview, page 1"/>
-                </a>
-
-              </Grid>
-              <Grid item xs={12} sm={6} md={12}>
-                <a
-                  href="https://open990-assets.s3.amazonaws.com/pdf/990Consulting_ReportPreview.pdf">
-                  <img
-                    className={classes.image}
-                    src={thumbnail2}
-                    alt="Open990 Benchmark Preview, page 2"/>
-                </a>
-              </Grid>
-              <Grid item xs={12}>
-                <a
-                  className={classes.pdfSectionLink}
-                  href="https://open990-assets.s3.amazonaws.com/pdf/990Consulting_ReportPreview.pdf">
-                  Download our
-                  report preview!
-                </a>
+    <Fragment>
+      <Helmet>
+        <title>Nonprofit Organizations &ndash; Benchmark reports from Open990</title>
+        <meta name="description" content="We use IRS data to create reports of financial trends compared to similar e-filing organizations. Liquidity, fundraising efficiency, & other metrics." />
+        <meta name="robots" content="all"/>
+      </Helmet>
+      <div className={classes.root}>
+        <MaxContainer>
+          <Grid
+            container
+            justify="center"
+            spacing={24}
+          >
+            <Grid item xs={12} md={7}>
+              <Grid container spacing={24}>
+                <Grid item xs={12} sm={5}>
+                  <ContactForm
+                    subHeaderText={"Discuss your project"}
+                    direction={'column'}/>
+                </Grid>
+                <Grid item xs={12} sm={7} className={classes.heading}>
+                  <h1>
+                    Your organization's financial health over time, compared to the right
+                    peers.
+                  </h1>
+                  <h2>
+                    Custom benchmark reports and analysis for strategy, outreach, and risk assessment.
+                  </h2>
+                </Grid>
+                <Grid item md={12}>
+                  <div className={classes.secondaryHeader}>
+                    <h3>Metrics</h3>
+                  </div>
+                  <p className={classes.secondaryParagraph}>
+                    Customize your report by selecting among dozens of metrics —
+                    operating liquidity, fundraising efficiency, compensation spending, and more. We provide a
+                    snapshot of your finances using visuals, as well as the underlying data for your further
+                    analysis.
+                  </p>
+                  <div className={classes.secondaryHeader}>
+                    <h3>Comparison groups</h3>
+                  </div>
+                  <p className={classes.secondaryParagraph}>
+                    Compare your organization to peers chosen on the criteria that
+                    matter to you: cause area (NTEE), size, geography, and more. You also have the option of using
+                    our cutting-edge Deep Comparables model to develop a peer set uniquely relevant to your
+                    organization’s mission and services.
+                  </p>
+                </Grid>
               </Grid>
             </Grid>
+            <Grid item sm={12} md={3}>
+              <Grid container>
+                <Grid item xs={12} sm={6} md={12}>
+                  <a href="https://open990-assets.s3.amazonaws.com/pdf/990Consulting_ReportPreview.pdf">
+                    <img
+                      className={classes.image}
+                      src={thumbnail1}
+                      alt="Open990 Benchmark Preview, page 1"/>
+                  </a>
+                
+                </Grid>
+                <Grid item xs={12} sm={6} md={12}>
+                  <a
+                    href="https://open990-assets.s3.amazonaws.com/pdf/990Consulting_ReportPreview.pdf">
+                    <img
+                      className={classes.image}
+                      src={thumbnail2}
+                      alt="Open990 Benchmark Preview, page 2"/>
+                  </a>
+                </Grid>
+                <Grid item xs={12}>
+                  <a
+                    className={classes.pdfSectionLink}
+                    href="https://open990-assets.s3.amazonaws.com/pdf/990Consulting_ReportPreview.pdf">
+                    Download our
+                    report preview!
+                  </a>
+                </Grid>
+              </Grid>
+            </Grid>
+            
+            <Grid item xs={12} className={classes.bottomText}>
+              <p className={classes.secondaryParagraph}>Benchmark reports start at $900.</p>
+            </Grid>
           </Grid>
-
-          <Grid item xs={12} className={classes.bottomText}>
-            <p className={classes.secondaryParagraph}>Benchmark reports start at $900.</p>
-          </Grid>
-        </Grid>
-      </MaxContainer>
-    </div>
+        </MaxContainer>
+      </div>
+    </Fragment>
   )
 };
 
-export default withDynamicMeta(withStyles(styles)(Benchmark));
+export default withStyles(styles)(Benchmark);
  

@@ -2,8 +2,9 @@
  * Copyright (c) 2018 990 Consulting, LLC. All rights reserved.
  */
 
-import React from 'react';
-import withDynamicMeta from 'hoc/withDynamicMeta'
+import React, { Fragment } from 'react';
+import { Helmet } from 'react-helmet';
+
 import withStyles from '@material-ui/core/styles/withStyles';
 import SearchResults from 'searchResults/SearchResults';
 import apiClient from 'App/ApiClient';
@@ -48,7 +49,7 @@ class OrgSearchResults extends React.Component {
       accessor: d => <span data-label='State'>{d.state}</span>,
       maxWidth: 130,
       minWidth: 50
-    
+      
     },
     {
       id: 'total-assets',
@@ -60,12 +61,21 @@ class OrgSearchResults extends React.Component {
   ];
   
   render() {
-    return (<SearchResults
-      fetchResults={apiClient.searchOrganizationsWithParams}
-      columns={this.columns}
-      renameRow={this.renameRow}
-    />)
+    return (
+      <Fragment>
+        <Helmet>
+          <title>Nonprofit search results | Open990</title>
+          <meta name="description" content="Search results for U.S. charities, foundations, and other nonprofits. Open990 is a free resource for public information on more than 1 million nonprofits." />
+          <meta name="robots" content="all"/>
+        </Helmet>
+        <SearchResults
+          fetchResults={apiClient.searchOrganizationsWithParams}
+          columns={this.columns}
+          renameRow={this.renameRow}
+        />
+      </Fragment>
+    )
   }
 }
 
-export default withDynamicMeta(withStyles(styles)(OrgSearchResults));
+export default withStyles(styles)(OrgSearchResults);

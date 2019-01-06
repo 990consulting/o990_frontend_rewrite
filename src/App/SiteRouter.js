@@ -43,47 +43,24 @@ class SiteRouter extends React.Component {
   render() {
     return (
       <Switch>
-        <Route path={homeOrg} exact component={HomeOrg} />
-        <Route path={homePeople} exact component={HomePeople} />
-        <Route path={copyrightPolicy} exact render={(props) => (
-          <CopyrightPolicy {...props} />
-        )} />
-        <Route path={termsOfService} exact render={(props) => (
-          <TermsOfService {...props} />
-        )} />
-        <Route path={privacyPolicy} exact render={(props) => (
-          <PrivacyPolicy {...props} />
-        )} />
-        <Route path={contact} exact render={(props) => (
-          <Contact {...props} />
-        )} />
-        <Route path={benchmark} exact render={(props) => (
-          <Benchmark {...props} />
-        )} />
-        <Route path={customData} exact render={(props) => (
-          <CustomData {...props} />
-        )} />
-        <Route path={api} exact render={(props) =>(
-          <Api {...props} />
-        )} />
-        <Route path={resources} exact render={(props) => (
-          <Resources {...props} />
-        )} />
-        <Route path={catalog} exact render={(props) =>(
-          <Catalog {...props} />
-        )} />
-        <Route path={root} exact render={() => (
-          <Redirect to={homeOrg} />
-        )} />
-        <Route path={orgSearch} component={OrgSearchResults} />
-        {/* Note: Although listed in the doco, path={[orgProfile, orgProfileExtended]} doesn't work */}
+        <Route path={homeOrg} exact component={HomeOrg} /> {/* Helmeted */}
+        <Route path={homePeople} exact component={HomePeople} /> {/* Helmeted */}
+        <Route path={copyrightPolicy} exact component={CopyrightPolicy} /> {/* Helmeted */}
+        <Route path={termsOfService} exact component={TermsOfService} /> {/* Helmeted */}
+        <Route path={privacyPolicy} exact component={PrivacyPolicy} /> {/* Helmeted */}
+        <Route path={contact} exact component={Contact} /> {/* Helmeted */}
+        <Route path={benchmark} exact component={Benchmark} /> {/* Helmeted */}
+        <Route path={customData} exact component={CustomData} /> {/* Helmeted */}
+        <Route path={api} exact component={Api} /> {/* Helmeted */}
+        <Route path={resources} exact component={Resources} /> {/* Helmeted */}
+        <Route path={catalog} exact component={Catalog} /> {/* Helmeted */}
+        <Route path={orgSearch} component={OrgSearchResults} /> {/* Helmeted */}
         <Route path = {orgProfile} component={OrgProfile} />
         <Route path = {orgProfileExtended} component={OrgProfile} />
-        <Route path={data} exact render={() =>(
-          <Redirect to={resources} /> )} />
-        <Route path={pro} exact render={() =>(
-          <Redirect to={customData} />
-        )} />
+        
+        <Route path={root} exact render={() => ( <Redirect to={homeOrg} /> )} />
+        <Route path={data} exact render={() =>( <Redirect to={resources} /> )} />
+        <Route path={pro} exact render={() =>( <Redirect to={customData} /> )} />
       </Switch>
     )
   }

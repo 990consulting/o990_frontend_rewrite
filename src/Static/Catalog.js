@@ -2,8 +2,9 @@
  * Copyright (c) 2018 990 Consulting, LLC. All rights reserved.
  */
 
-import React from 'react';
-import withDynamicMeta from 'hoc/withDynamicMeta'
+import React, { Fragment } from 'react';
+import { Helmet } from 'react-helmet';
+
 import { withRouter } from 'react-router-dom';
 import classNames from 'classnames';
 
@@ -99,9 +100,9 @@ const styles = (theme) => ({
 });
 
 const Catalog = ({
-    classes,
-  }) => {
-
+                   classes,
+                 }) => {
+  
   /*const advancedSearchLink = (
     <NavLink to={search} className={classes.link}>
       {'Advanced Search'}
@@ -113,66 +114,72 @@ const Catalog = ({
       {'variable-level files'}
     </NavLink>
   );*/
-
+  
   return (
-    <div className={classNames("Catalog", classes.root)}>
-      <MaxContainer classes={{ container: classes.container }}>
-        <Grid item xs={12}>
-          <Grid container justify="center">
-            <Grid item xs={12} md={10} lg={8} className={classes.lineHeader}>
-              <h1>Products &amp; Services</h1>
-            </Grid>
-            <Grid item xs={12} md={10} lg={8} className={classes.subHeader}>
+    <Fragment>
+      <Helmet>
+        <title>Nonprofit Data &ndash; Explore Open990 products & services</title>
+        <meta name="description" content="Open990 sells information about nonprofits in the form of benchmark reports, datasets, APIs, and consulting. Compare to Guidestar and Foundation Center." />
+        <meta name="robots" content="all"/>
+      </Helmet>
+      <div className={classNames("Catalog", classes.root)}>
+        <MaxContainer classes={{ container: classes.container }}>
+          <Grid item xs={12}>
+            <Grid container justify="center">
+              <Grid item xs={12} md={10} lg={8} className={classes.lineHeader}>
+                <h1>Products &amp; Services</h1>
+              </Grid>
+              <Grid item xs={12} md={10} lg={8} className={classes.subHeader}>
                 Browse our products. <br/>
                 Free datasets coming soon.
+              </Grid>
             </Grid>
           </Grid>
-        </Grid>
-        <Grid item xs={12}>
-          <Grid container justify="center">
-            <Grid item xs={12} md={10} lg={8}>
-              <Grid container justify="center" spacing={40}>
-                <Grid item xs={12} sm={6}>
-                  <ProductCard 
-                    icon={foundationIcon}
-                    title={'Foundations Dataset'}
-                    text={cardText.foundation}
-                    firstButtonText={'Info'}
-                    firstButtonLink={root}
-                    firstButton={false}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <ProductCard 
-                    icon={customIcon}
-                    title={'Custom Dataset'}
-                    text={cardText.customDataset}
-                    firstButtonText={'Info'}
-                    firstButtonLink={pro}
-                    firstButton={true}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <ProductCard
-                    icon={benchmarkIcon}
-                    title={'Benchmark Report'}
-                    text={cardText.benchmarkReport}
-                    firstButtonText={'Info'}
-                    firstButtonLink={benchmark}
-                    firstButton={true}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <ProductCard 
-                    icon={apiIcon}
-                    title={'API'}
-                    text={cardText.api}
-                    firstButtonText={'Info'}
-                    firstButtonLink={api}
-                    firstButton={true}
-                  />
-                </Grid>
-                {/* <Grid item xs={12} sm={6}>
+          <Grid item xs={12}>
+            <Grid container justify="center">
+              <Grid item xs={12} md={10} lg={8}>
+                <Grid container justify="center" spacing={40}>
+                  <Grid item xs={12} sm={6}>
+                    <ProductCard
+                      icon={foundationIcon}
+                      title={'Foundations Dataset'}
+                      text={cardText.foundation}
+                      firstButtonText={'Info'}
+                      firstButtonLink={root}
+                      firstButton={false}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <ProductCard
+                      icon={customIcon}
+                      title={'Custom Dataset'}
+                      text={cardText.customDataset}
+                      firstButtonText={'Info'}
+                      firstButtonLink={pro}
+                      firstButton={true}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <ProductCard
+                      icon={benchmarkIcon}
+                      title={'Benchmark Report'}
+                      text={cardText.benchmarkReport}
+                      firstButtonText={'Info'}
+                      firstButtonLink={benchmark}
+                      firstButton={true}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <ProductCard
+                      icon={apiIcon}
+                      title={'API'}
+                      text={cardText.api}
+                      firstButtonText={'Info'}
+                      firstButtonLink={api}
+                      firstButton={true}
+                    />
+                  </Grid>
+                  {/* <Grid item xs={12} sm={6}>
                   <ProductCard
                     icon={foundationIcon}
                     title={'Foundation Dataset'}
@@ -190,8 +197,8 @@ const Catalog = ({
                     firstButtonLink={root}
                   />
                 </Grid> */}
-              </Grid>
-              {/* <Grid item xs={12}>
+                </Grid>
+                {/* <Grid item xs={12}>
                 <Grid container justify="center">
                   <Grid item xs={12} sm={10}>
                     <div className={classes.bottomText}>
@@ -202,13 +209,14 @@ const Catalog = ({
                   </Grid>
                 </Grid>
               </Grid> */}
+              </Grid>
             </Grid>
           </Grid>
-        </Grid>
-      </MaxContainer>
-    </div>
+        </MaxContainer>
+      </div>
+    </Fragment>
   )
 }
 
-export default withDynamicMeta(withStyles(styles)(withRouter(Catalog)));
+export default withStyles(styles)(withRouter(Catalog));
 
