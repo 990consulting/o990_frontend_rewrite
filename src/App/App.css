@@ -348,7 +348,7 @@ footer {
     }
 
     body {
-        overflow: scroll !important;
+        overflow-y: scroll !important;
     }
 }
 
@@ -409,4 +409,14 @@ footer {
 
 body {
     padding-right: 0 !important;
+}
+
+.SearchPage {
+    width: 100%;
+}
+
+@media screen and (min-width: 600px) and (max-width: 960px) {
+    .SearchPage {
+        margin-left: 10px;
+    }
 }

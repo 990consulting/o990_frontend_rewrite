@@ -43,14 +43,14 @@ class Sidebar extends React.Component {
         >
           <MobileSidebar
             scrollToTop={scrollToTop}
-            collapsed={collapsed}
+            collapsed={collapsed === undefined ? true : collapsed}
             toggleCollapse={toggleCollapse}
           >
             {children}
           </MobileSidebar>
           <DesktopSidebar
             scrollToTop={scrollToTop}
-            collapsed={collapsed}
+            collapsed={collapsed === undefined ? false : collapsed}
             toggleCollapse={toggleCollapse}
           >
             {children}
