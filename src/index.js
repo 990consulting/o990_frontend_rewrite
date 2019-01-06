@@ -2,6 +2,9 @@
  * Copyright (c) 2018 990 Consulting, LLC. All rights reserved.
  */
 
+import "@babel/polyfill";
+import "whatwg-fetch";
+
 import { BrowserRouter } from 'react-router-dom';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -12,6 +15,7 @@ import App from 'App/App.js';
 import theme from 'theme';
 import './App/App.css';
 import 'react-table/react-table.css'
+
 
 ReactDOM.render(
   <MuiThemeProvider theme={theme}>

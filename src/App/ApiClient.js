@@ -3,7 +3,7 @@
  */
 
 import axios from 'axios';
-import DummyApiClient from 'App/DummyApiClient';
+//import DummyApiClient from 'App/DummyApiClient';
 
 class ApiClient {
   
@@ -60,6 +60,6 @@ class ApiClient {
   }
 }
 
-//const apiClient = new ApiClient();
-const apiClient = new DummyApiClient();
+const apiClient = new ApiClient();
+//const apiClient = new DummyApiClient();
 export default apiClient;
