@@ -7,114 +7,114 @@
 html,
 body,
 #root {
-  font-family: 'Roboto Condensed', sans-serif;
-  height: 100%;
+    font-family: 'Roboto Condensed', sans-serif;
+    height: 100%;
 }
 
 body {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 h1,
 h2,
 h3,
 h4 {
-  font-family: 'Lato', sans-serif;
+    font-family: 'Lato', sans-serif;
 }
 
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 main {
-  flex: 1 0 auto;
+    flex: 1 0 auto;
 }
 
 footer {
-  flex-shrink: 0;
+    flex-shrink: 0;
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+    animation: App-logo-spin infinite 20s linear;
+    height: 80px;
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+    background-color: #222;
+    height: 150px;
+    padding: 20px;
+    color: white;
 }
 
 .App-title {
-  font-size: 1.5em;
+    font-size: 1.5em;
 }
 
 .App-intro {
-  font-size: large;
+    font-size: large;
 }
 
 .Table__itemCount {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 .Table__pagination {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 10px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 10px;
 }
 @media screen and (max-width:600px) {
-  .Table__pagination {
-    padding: 20px 0px;
-  }
-  .ReactTable .rt-tbody .rt-td:nth-child(even) {
-    background: rgba(227, 227, 227, 0.7)!important;
-  }
-  .Table__visiblePagesWrapper button {
-    width: 20px!important;
-    height: 20px!important;
-    padding: 0!important;
-  }
-  .Table__visiblePagesWrapper {
-    display: flex;
-    align-items:center;
-  }
+    .Table__pagination {
+        padding: 20px 0px;
+    }
+    .ReactTable .rt-tbody .rt-td:nth-child(even) {
+        background: rgba(227, 227, 227, 0.7)!important;
+    }
+    .Table__visiblePagesWrapper button {
+        width: 20px!important;
+        height: 20px!important;
+        padding: 0!important;
+    }
+    .Table__visiblePagesWrapper {
+        display: flex;
+        align-items:center;
+    }
 }
 
 .Table__pageButton {
-  font-size: 15px;
-  outline: none;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
+    font-size: 15px;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 .Table__pageButton:disabled {
-  cursor: not-allowed;
-  color: gray;
+    cursor: not-allowed;
+    color: gray;
 }
 
 .Table__pageButton--active {
-  color: white;
-  font-weight: bold;
-  border-radius: 100px;
-  background-color: #8553ff;
-  width: 32px;
-  height: 32px;
+    color: white;
+    font-weight: bold;
+    border-radius: 100px;
+    background-color: #8553ff;
+    width: 32px;
+    height: 32px;
 }
 
 .Table__visiblePagesWrapper button {
-  width: 32px;
-  height: 32px;
+    width: 32px;
+    height: 32px;
 }
 
 .Table__nextPageWrapper>button,
 .Table__prevPageWrapper>button {
-  display: flex;
-  align-items: center;
-  font-weight: bold;
-  color: #8553ff;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    color: #8553ff;
 }
 
 @media screen and (max-width: 960px) {
@@ -152,4 +152,271 @@ footer {
 
 .ReactTable.-striped .rt-tr.-odd {
     background: none !important;
+}
+
+.expansion-panel-summary {
+    flex-direction: row-reverse;
+    padding-left: 0px !important;
+    min-height: 52px !important;
+}
+
+.expansion-panel-summary > div:first-child {
+    position: relative;
+    left: -5px;
+}
+
+.expansion-panel-summary > div:last-child {
+    position: relative;
+    top: 22px;
+    right: unset;
+    transform: translateY(-50%) rotate(270deg) !important
+}
+
+.expansion-panel-summary {
+    background: white;
+    color: black;
+}
+
+.expansion-panel-summary.always, .expansion-panel-summary[class*=expanded].expand {
+    background: #6839d3;
+}
+
+.expansion-panel-summary.always:hover, .expansion-panel-summary[class*=expanded].expand:hover {
+    background: #8863dc;
+}
+
+.expansion-panel-summary.always span, .expansion-panel-summary[class*=expanded].expand span,
+.expansion-panel-summary.always p, .expansion-panel-summary[class*=expanded].expand p {
+    color: white;
+    font-weight: bold;
+}
+
+.expansion-panel-summary > div[class*=expanded]:last-child {
+    transform: translateY(-50%) rotate(360deg) !important
+}
+
+.expansion-panel-details > div {
+    margin-top: 0 !important;
+}
+
+#sidebar {
+    text-align: left;
+}
+
+#sidebar span, #sidebar h2 {
+    color: black;
+}
+
+#sidebar h2 + div {
+    padding-top: 4px !important;
+}
+
+#sidebar span:hover {
+    color: #6839d3
+}
+
+.expansion-panel-summary.top-level span {
+    color: white;
+}
+
+.expansion-panel-summary.top-level > div:first-child {
+    margin: 0px 0 !important;
+}
+
+.expansion-panel-summary > div:first-child {
+    transition-duration: 300ms !important;
+}
+
+.expansion-panel-details .rt-th:first-child, .expansion-panel-details .rt-td:first-child {
+    flex: 2;
+    padding-left: 40px !important;
+    text-align: left;
+}
+
+@media screen and (max-width: 600px) {
+    .expansion-panel-details .rt-th:first-child, .expansion-panel-details .rt-td:first-child {
+        flex: 1.8;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 1280px) {
+    .expansion-panel-details .rt-th:first-child, .expansion-panel-details .rt-td:first-child {
+        flex: 1.6;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .expansion-panel-details .rt-th:first-child, .expansion-panel-details .rt-td:first-child {
+        flex: 1.6;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .react-table-container-2.maximized .rt-th:first-child,
+    .react-table-container-2.maximized .rt-td:first-child {
+        flex: 1.4 !important;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 1280px) {
+    .react-table-container-2.maximized .rt-th:first-child,
+    .react-table-container-2.maximized .rt-td:first-child {
+        flex: 0.76 !important;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .react-table-container-2.maximized .rt-th:first-child,
+    .react-table-container-2.maximized .rt-td:first-child {
+        flex: 0.51 !important;
+    }
+}
+
+.react-table-container-0 {
+    width: calc(100% - 20px);
+    border: 1px solid rgba(0,0,0,0.1);
+    overflow-x: scroll;
+}
+
+.react-table-container-0 .ReactTable {
+    border: none !important;
+}
+
+.expansion-panel-summary.top-level + div > div > div > .expansion-panel-details {
+    padding-right: 0px !important;
+    padding-left: 12px !important;
+    padding-top: 0;
+    padding-bottom: 11px;
+}
+
+.expansion-panel-summary.top-level + div > div > div > .expansion-panel-details > div > .react-table-container-0 {
+    width: calc(100% - 14px);
+}
+
+@media screen and (max-width: 1280px) {
+    .react-table-container-2:not(.maximized) {
+        width: 125%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .react-table-container-2:not(.maximized) {
+        width: 158%;
+    }
+}
+
+.react-table-container-2.maximized .rt-thead {
+    display: none;
+    height: 0;
+}
+
+@media screen and (max-width: 960px) and (min-width: 600px) {
+    #org-profile {
+        padding-left: 40px !important;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #org-profile {
+        padding-left: 20px !important;
+    }
+}
+
+.OrganizationProfilePage > div > div > div > div[class*=MuiGrid-item] + div[class*=MuiGrid-container] {
+    margin-top: 15px;
+}
+
+.mobile-sidebar-button {
+    position: fixed;
+    top: calc(50% - 10px);
+    color: #6839d3;
+    left: 12px;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 960px) {
+    .mobile-sidebar-button {
+        display: none;
+    }
+
+    .mobile-sidebar {
+        display: none;
+    }
+
+    .mobile-sidebar-dialog {
+        display: none;
+    }
+
+    body {
+        overflow-y: scroll !important;
+    }
+}
+
+.mobile-sidebar-dialog {
+    width: 300px !important;
+}
+
+.mobile-sidebar-dialog > div > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.desktop-sidebar svg {
+    position: relative;
+    left: 5px;
+}
+
+#sidebar > [class*=tocList] > [class*=tocItem] {
+    padding-left: 0;
+}
+
+.react-table-container-2 .ReactTable .rt-tbody .rt-td:nth-child(even) {
+    background: rgba(227, 227, 227, 0.7) !important;
+}
+
+.expansion-panel-summary:not([class*=TopLevel]) > div:first-child {
+    margin: 12px 0 !important;
+}
+
+#sidebar * {
+    cursor: default;
+}
+
+#sidebar span {
+    cursor: pointer !important;
+}
+
+.ReactTable .rt-tbody .rt-td {
+    text-overflow: clip !important;
+    white-space: normal !important;
+}
+
+.mobile-sidebar-button-container {
+    position: fixed;
+    top: calc(50% - 10px);
+    color: #6839d3;
+    left: 0;
+    cursor: pointer;
+    width: 36px;
+    height: 100%;
+    top: 56px;
+}
+
+.ReactTable .rt-tbody .rt-tr-group, .ReactTable .rt-tr {
+    overflow: hidden !important;
+}
+
+body {
+    padding-right: 0 !important;
+}
+
+.SearchPage {
+    width: 100%;
+}
+
+@media screen and (min-width: 600px) and (max-width: 960px) {
+    .SearchPage {
+        margin-left: 10px;
+    }
 }

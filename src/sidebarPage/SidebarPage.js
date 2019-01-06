@@ -16,7 +16,7 @@ class OrganizationProfile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      sidebarCollapsed: false
+      sidebarCollapsed: undefined
     };
   }
   
@@ -45,7 +45,7 @@ class OrganizationProfile extends React.Component {
           
           <Grid container>
             {/* Sidebar */}
-            <Grid item className={sidebarCollapsed && this.props.isViewMdUp ? classes.sideClose : classes.sideOpen} >
+            <Grid item className={sidebarCollapsed ? classes.sideClose : classes.sideOpen} >
               <Sidebar titleText={"Contents"} collapsed={sidebarCollapsed} toggleCollapse={toggleCollapse}>
                 {sidebarContent}
               </Sidebar>

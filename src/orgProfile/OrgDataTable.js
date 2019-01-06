@@ -74,12 +74,22 @@ class OrgDataTable extends Component {
 		if (!this.state.isLoaded) {
 			return (<div>&nbsp;</div>);
 		} else {
-			return (<ReactTable
-				columns={this.createColumns()}
-				data={this.state.rows}
-				showPagination={false}
-				minRows={0}
-			/>);
+			const columns = this.createColumns();
+			const width = 40 + 20 * (columns.length - 1);
+			const isMaximized = width < 100;
+			return (<div className="react-table-container-0">
+				<div className="react-table-container-1" style={{width: (isMaximized ? 100 : width) + '%'}}>
+					<div className={"react-table-container-2" + (isMaximized ? ' maximized' : '')}>
+						<ReactTable
+							columns={this.createColumns()}
+							data={this.state.rows}
+							showPagination={false}
+							minRows={0}
+							scroll={{x: true}}
+						/>
+					</div>
+				</div>
+			</div>);
 		}
 	}
 }

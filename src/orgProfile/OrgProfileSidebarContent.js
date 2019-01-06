@@ -40,10 +40,14 @@ class OrgProfileSidebarContent extends React.Component {
   
   render() {
     const {body, classes} = this.props;
-    return(<Grid container className={classes.menu} >
-      <h2>Contents</h2>
+    const style = {
+      'position': 'relative',
+      'top': '-53px'
+    };
+  
+    return(<Grid container className={classes.menu} style={style} id="sidebar">      <h2>Contents</h2>
       {this.buildToc(body)}
-    </Grid>)
+    </Grid>);
   }
 }
 
