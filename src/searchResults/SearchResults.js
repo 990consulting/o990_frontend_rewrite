@@ -11,7 +11,7 @@ import { styles } from 'searchResults/searchStyles';
 
 class SearchResults extends React.Component {
   render() {
-    const { columns, fetchResults, renameRow } = this.props;
+    const { columns, fetchResults, renameRow, handleClick } = this.props;
     const sidebarContent = (<Fragment>
       <h2>Search parameters go here</h2>
       <h3>That wasn't so hard</h3>
@@ -21,6 +21,7 @@ class SearchResults extends React.Component {
       columns={columns}
       fetchResults={fetchResults}
       renameRow={renameRow}
+      handleClick={handleClick}
     />;
     return (<SidebarPage
       sidebarContent={sidebarContent}

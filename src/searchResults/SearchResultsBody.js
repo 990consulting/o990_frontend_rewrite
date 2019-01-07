@@ -53,14 +53,21 @@ class SearchResultsBody extends React.Component {
       return [];
     }
   }
+ 
+  getOnClickFunction(index) {
+    const { history, handleClick } = this.props;
+    const { matches } = this.state;
+    return () => {
+      handleClick(matches, index, history);
+    };
+  }
   
   render() {
     const {
       classes,
-      history,
       columns
     } = this.props;
-    const { caption, matches } = this.state;
+    const { caption } = this.state;
     const data = this.getData();
     
     return (
@@ -80,7 +87,6 @@ class SearchResultsBody extends React.Component {
               columns={columns}
               className={`${classes.table} -striped`}
               onPageChange={page => this.setState({page})}
-              // noDataText={'Specify your search parameters in the form on the left.'}
               getTrProps={() => {
                 return {
                   className: classes.modifyTr
@@ -115,10 +121,7 @@ class SearchResultsBody extends React.Component {
                 if (rowInfo && rowInfo.row) {
                   return {
                     className: classes.modifyGroupTr,
-                    onClick: () => {
-                      const ein = matches[rowInfo.index]['EIN'];
-                      history.push(`/org/${ein}`)
-                    }
+                    onClick: this.getOnClickFunction(rowInfo.index)
                   }
                 }else{
                   return {}

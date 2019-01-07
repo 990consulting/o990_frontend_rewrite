@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2018 990 Consulting, LLC. All rights reserved.
- */
-
 import React, { Fragment } from 'react';
 import { Helmet } from 'react-helmet';
 
@@ -11,18 +7,19 @@ import apiClient from 'App/ApiClient';
 const styles = (theme) => ({});
 
 function handleClick(matches, index, history) {
-  const ein = matches[index]['EIN'];
-  history.push(`/org/${ein}`);
+  const url = matches[index]['_url'];
+  console.log("I think you want me to go to " + url);
+  history.push(url);
 }
 
-class OrgSearchResults extends React.Component {
+class PeopleSearchResults extends React.Component {
   renameRow = dataItem => {
     return {
+      link: dataItem['_url'],
       name: dataItem['Name'],
-      ein: dataItem['EIN'],
-      city: dataItem['City'],
-      state: dataItem['State'],
-      totalAssets: dataItem['Total assets']
+      title: dataItem['Title'],
+      organization: dataItem['Organization'],
+      compensation: dataItem['Compensation']
     }
   };
   
@@ -31,37 +28,29 @@ class OrgSearchResults extends React.Component {
       id: 'name',
       Header: 'Name',
       accessor: d => <span data-label='Name'>{d.name}</span>,
-      maxWidth: 777,
-      minWidth: 400
+      maxWidth: 300,
+      minWidth: 150
     },
     {
-      id: 'ein',
-      Header: 'EIN',
-      accessor: d => <span data-label='EIN'>{d.ein}</span>,
-      maxWidth: 150,
-      minWidth: 100
+      id: 'title',
+      Header: 'Title',
+      accessor: d => <span data-label='Title'>{d.title}</span>,
+      maxWidth: 300,
+      minWidth: 200
     },
     {
-      id: 'city',
-      Header: 'City',
-      accessor: d => <span data-label='City'>{d.city}</span>,
-      maxWidth: 230,
-      minWidth: 100
+      id: 'organization',
+      Header: 'Organization',
+      accessor: d => <span data-label='Organization'>{d.organization}</span>,
+      maxWidth: 590,
+      minWidth: 300
     },
     {
-      id: 'state',
-      Header: 'State',
-      accessor: d => <span data-label='State'>{d.state}</span>,
-      maxWidth: 130,
-      minWidth: 50
-      
-    },
-    {
-      id: 'total-assets',
-      Header: 'Total assets',
-      accessor: d => <span data-label='Total assets'>{d.totalAssets}</span>,
-      maxWidth: 150,
-      minWidth: 100
+      id: 'compensation',
+      Header: 'Compensation',
+      accessor: d => <span data-label='Compensation'>{d.compensation}</span>,
+      maxWidth: 250,
+      minWidth: 80
     }
   ];
   
@@ -74,7 +63,7 @@ class OrgSearchResults extends React.Component {
           <meta name="robots" content="all"/>
         </Helmet>
         <SearchResults
-          fetchResults={apiClient.searchOrganizationsWithParams}
+          fetchResults={apiClient.searchPeopleWithParams}
           columns={this.columns}
           renameRow={this.renameRow}
           handleClick={handleClick}
@@ -84,4 +73,4 @@ class OrgSearchResults extends React.Component {
   }
 }
 
-export default withStyles(styles)(OrgSearchResults);
+export default withStyles(styles)(PeopleSearchResults);

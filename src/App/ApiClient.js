@@ -31,11 +31,11 @@ class ApiClient {
   };
   
   searchOrganizationsWithParams = (paramsQuery) => {
-    return this.axiosBinding.get(`/api/search/org/${paramsQuery}/`);
+    return this.axiosBinding.get(`/api/search/org/${paramsQuery}`);
   };
   
   searchPeopleWithParams = (paramsQuery) => {
-    return this.axiosBinding.get(`/api/search/people${paramsQuery}/`);
+    return this.axiosBinding.get(`/api/search/people/${paramsQuery}`);
   };
   
   searchDataByQuery = (searchQuery) => {
