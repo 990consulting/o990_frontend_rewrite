@@ -11,7 +11,7 @@ import Grid from '@material-ui/core/Grid';
 //import StupidHomeBanner from 'HomePage/StupidHomeBanner';
 import HomeCardRibbon from 'HomePage/HomeCardRibbon';
 import HomeBanner from 'HomePage/HomeBanner';
-const styles = (theme) => ({
+const styles = () => ({
   container: {
     height: '100%'
   }

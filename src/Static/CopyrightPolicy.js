@@ -6,7 +6,6 @@ import React, { Fragment } from 'react';
 import { Helmet } from 'react-helmet';
 
 import withStyles from '@material-ui/core/styles/withStyles';
-import withDynamicMeta from 'hoc/withDynamicMeta'
 
 import MaxContainer from 'hoc/MaxContainer';
 import classNames from 'classnames';
@@ -176,4 +175,4 @@ class CopyrightPolicy extends React.Component {
   }
 }
 
-export default withDynamicMeta(withStyles(styles)(CopyrightPolicy));
+export default withStyles(styles)(CopyrightPolicy);

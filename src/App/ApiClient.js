@@ -8,7 +8,7 @@ import axios from 'axios';
 class ApiClient {
   
   axiosBinding = axios.create({
-    baseURL: 'http://staging.preview.open990/',
+    baseURL: 'http://test.preview.open990/',
     headers: {
       contentType: 'application/json'
     }

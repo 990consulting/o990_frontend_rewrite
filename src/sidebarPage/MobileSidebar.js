@@ -19,7 +19,7 @@ import faBars from '@fortawesome/fontawesome-free-solid/faBars';
 class MobileSidebar extends React.Component {
   render() {
     const {
-      scrollToTop,
+      //scrollToTop,
       collapsed,
       toggleCollapse,
       classes,

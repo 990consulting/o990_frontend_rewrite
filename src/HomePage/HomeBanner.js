@@ -20,7 +20,7 @@ import {
 class HomeBanner extends React.Component {
   constructor(props) {
     super(props);
-    console.log(JSON.stringify(Object.keys(props)));
+    //console.log(JSON.stringify(Object.keys(props)));
     this.state = {
       searchValue: ''
     };

@@ -2,12 +2,11 @@
  * Copyright (c) 2018 990 Consulting, LLC. All rights reserved.
  */
 
-import React, { Fragment } from 'react';
+import React from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
 import OrgDataTable from './OrgDataTable';
 import StyledPanel from "./StyledPanel";
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 
 const styles = () => ({});
 class OrgExpansionPanel extends React.Component {

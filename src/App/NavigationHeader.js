@@ -39,7 +39,7 @@ import {
   catalog,
   resources
 } from 'App/routes';
-import Api from "../Static/Api";
+//import Api from "../Static/Api";
 
 
 

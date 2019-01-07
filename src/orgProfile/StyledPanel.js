@@ -111,10 +111,10 @@ class UnstyledPanel extends React.Component {
     
     const panelStyles = isTopLevel ? {} : {'boxShadow': 'none'};
     const detailStyles = {'paddingRight': '0', paddingLeft: '12px'};
-    const detailChildStyles = {
+    /*const detailChildStyles = {
       'display': 'flex',
       'justify-content': 'center'
-    };
+    };*/
     const className = isTopLevel ? 'top-level-panel' : '';
     
     return(<Grid item xs={12}>

@@ -13,8 +13,8 @@ import apiClient from 'App/ApiClient';
 import OrgProfileHeader from "./OrgProfileHeader";
 import OrgProfileDetails from "./OrgProfileDetails";
 import OrgProfileSidebarContent from './OrgProfileSidebarContent'
+import OrgProfileHelmet from './OrgProfileHelmet';
 import Loader from 'react-loader-spinner'
-
 class OrganizationProfile extends React.Component {
  
   constructor(props) {
@@ -22,35 +22,54 @@ class OrganizationProfile extends React.Component {
     this.state = {
       loaded: false,
       header: null,
-      res: null,
       body: null,
       periods: null,
+      meta: null,
       error: false
     }
   }
   
   componentDidMount() {
-    const ein = this.props.match.params.ein;
-    apiClient.getOrgSkeleton(ein)
-      .then(res => {
-        this.setState({
-          loaded: true,
-          header: res.data.header,
-          body: res.data.body,
-          periods: res.data.periods
-        });
-      }).catch(error => {
+    if (!this.state.loaded) {
+      const ein = this.props.match.params.ein;
+      apiClient.getOrgSkeleton(ein)
+        .then(res => {
+          this.setState({
+            loaded: true,
+            header: res.data.header,
+            body: res.data.body,
+            periods: res.data.periods,
+            meta: res.data.meta
+          });
+        }).catch(error => {
         this.setState({
           error: true
         })
-    });
+      });
+    }
   }
- 
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    const history = this.props.history;
+    const meta = this.state.meta;
+    
+    if (this.state.loaded) {
+      const actual = history.location.pathname;
+      const expected = meta.canonical;
+      console.log("A: " + actual);
+      console.log("E: " + expected);
+      if (actual !== expected) {
+        history.replace(expected);
+      }
+    }
+  }
+  
   render() {
-    const { loaded, header, body, periods, error } = this.state;
+    const { loaded, meta, header, body, periods, error } = this.state;
     const { classes } = this.props;
     if (loaded) {
       const bodyContent = (<Fragment>
+        <OrgProfileHelmet meta={meta} />
         <OrgProfileHeader content={header} />
         <OrgProfileDetails body={body} periods={periods} />
       </Fragment>);
