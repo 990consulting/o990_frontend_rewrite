@@ -19,7 +19,6 @@ class OrgProfileHeader extends React.Component {
       return "Unknown organization";
     }
   }
- 
   makeTopCard(i) {
     const { classes, content } = this.props;
     const cardContent = content.vitals[i];

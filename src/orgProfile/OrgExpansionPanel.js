@@ -23,11 +23,10 @@ class OrgExpansionPanel extends React.Component {
    
     constructPanelChild(childData) {
         return (
-          <Grid item xs={12}>
+          <Grid key = {childData.card_id} item xs={12}>
               <Grid container spacing={24}>
                   <Grid item xs={12}>
                       <OrgExpansionPanel
-                        key={childData.card_id}
                         raw={childData}
                         periods={this.props.periods}
                       />
