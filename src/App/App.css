@@ -191,10 +191,6 @@ footer {
     font-weight: bold;
 }
 
-.expansion-panel-summary > div[class*=expanded]:last-child {
-    transform: translateY(-50%) rotate(360deg) !important
-}
-
 .expansion-panel-details > div {
     margin-top: 0 !important;
 }
@@ -278,6 +274,10 @@ footer {
     overflow-x: scroll;
 }
 
+.react-table-container-0.maximized {
+    overflow-x: hidden;
+}
+
 .react-table-container-0 .ReactTable {
     border: none !important;
 }
@@ -322,7 +322,7 @@ footer {
     }
 }
 
-.OrganizationProfilePage > div > div > div > div[class*=MuiGrid-item] + div[class*=MuiGrid-container] {
+.OrganizationProfilePage > div > div > div > div:last-child {
     margin-top: 15px;
 }
 
@@ -367,7 +367,7 @@ footer {
     left: 5px;
 }
 
-#sidebar > [class*=tocList] > [class*=tocItem] {
+#sidebar > div > div {
     padding-left: 0;
 }
 
@@ -375,7 +375,7 @@ footer {
     background: rgba(227, 227, 227, 0.7) !important;
 }
 
-.expansion-panel-summary:not([class*=TopLevel]) > div:first-child {
+.expansion-panel-summary:not(.top-level) > div:first-child {
     margin: 12px 0 !important;
 }
 
@@ -419,4 +419,8 @@ body {
     .SearchPage {
         margin-left: 10px;
     }
+}
+
+#desktop-sidebar > div > div {
+    height: calc(100vh - 90px)
 }

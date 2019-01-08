@@ -25,7 +25,10 @@ const styles = (theme) => ({
   },
   expanded: {
     margin: 0,
-    background: `${theme.color.white} !important`
+    background: `${theme.color.white} !important`,
+    '& > div:first-child > div:last-child': {
+      transform: 'translateY(-50%) rotate(360deg) !important'
+    }
   },
   summaryRoot: {
     '&:hover': {
