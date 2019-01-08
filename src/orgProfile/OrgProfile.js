@@ -56,8 +56,6 @@ class OrganizationProfile extends React.Component {
     if (this.state.loaded) {
       const actual = history.location.pathname;
       const expected = meta.canonical;
-      console.log("A: " + actual);
-      console.log("E: " + expected);
       if (actual !== expected) {
         history.replace(expected);
       }

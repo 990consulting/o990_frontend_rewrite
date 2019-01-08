@@ -115,7 +115,7 @@ class AutosuggestField extends PureComponent {
   handleSuggestionsFetchRequested = ({value}) => {
 
     const getSuggestion = this.props.suggestion;
-    const route = this.props.route;
+    const baseUrl = this.props.baseUrl;
     const slug = this.props.slug;
   
     getSuggestion(value)
@@ -123,7 +123,7 @@ class AutosuggestField extends PureComponent {
     .then(suggestions => {
       suggestions.push({
         label: `See all matches for "${value}"`,
-        url: `${route}?${slug}=${value}`
+        url: `${baseUrl}?${slug}=${value}`
       });
       this.setState({
         suggestions: suggestions
