@@ -5,6 +5,12 @@
 export const skeleton = {
   "data": {
     "ein": "135562162",
+    "meta": {
+      "title": "HELEN KELLER INTERNATIONAL INCORPORATED Open990 profile",
+      "description": "See financial details about HELEN KELLER INTERNATIONAL INCORPORATED. Open990 is a free resource for public information on U.S. charities, foundations, and other nonprofits.",
+      "canonical": "/org/135562162/helen-keller-international-incorporated/",
+      "robots": "all"
+    },
     "header": {
       "name": "HELEN KELLER INTERNATIONAL INCORPORATED",
       "vitals": [
