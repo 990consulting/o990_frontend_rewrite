@@ -44,27 +44,31 @@ import {
 
 
 class NavigationHeader extends Component {
-  anchorListMenuEl = null;
-  state = {
-    anchorEl: null,
-    openMenuList: false,
-    isSearchBarActive: false
+  constructor(props) {
+    super(props);
+    this.anchorListMenuEl = null;
+    this.state = {
+      anchorEl: null,
+      openMenuList: false,
+      isSearchBarActive: false
+    };
+    this.asField = this.makeAsField();
+  }
+ 
+  makeAsField = () => {
+    return (<AutosuggestField
+      {...orgASProps}
+      onSearchClick={this.onSubmitclick}
+      onChangeValue={this.onSearchChange}
+      additionaClasses={this.props.classes.bootstrapRoot}
+      small={true}
+    />);
   };
-
-  onSubmitClick = (event) => {
-    if(event){
-      event.preventDefault();
-    }
-    const { searchValue } = this.props;
-    const { history } = this.props;
-
-    const searchByQuery = apiClient.searchOrganizationByQuery;
-
-    searchByQuery(searchValue)
-      .then(res => res.data)
-      .then(url => {
-        history.push(url);
-      })
+  
+  onSearchChange = (query) => {
+    this.setState({
+      searchValue: query
+    });
   };
 
   startSearch = () => {
@@ -102,6 +106,24 @@ class NavigationHeader extends Component {
 
     this.setState({openMenuList: false});
   };
+  
+  submit() {
+    console.log("submit triggered (NavigationHeader)");
+    const {history} = this.props;
+    const {searchValue} = this.state;
+    
+    apiClient.searchOrganizationByQuery(searchValue)
+      .then(res => res.data)
+      .then(url => {
+        history.push(url);
+      })
+  }
+  
+  onSubmitclick = (event) => {
+    console.log("onSubmitClick triggered (NavigationHeader)");
+    event.preventDefault();
+    this.submit();
+  };
 
   render() {
     const { 
@@ -115,6 +137,7 @@ class NavigationHeader extends Component {
         isSearchBarActive 
     } = this.state;
     const open = Boolean(anchorEl);
+    const onSubmitClick = this.onSubmitclick.bind(this);
 
     const links = [
       <span className={classes.simpleLink}>
@@ -272,22 +295,21 @@ class NavigationHeader extends Component {
               </Grid>
             </Hidden>
             <Hidden smDown>
-              <Grid item sm={3} className={classes.searchMenu}>
-                <AutosuggestField
-                  {...orgASProps}
-                  additionaClasses={classes.bootstrapRoot}
-                  small={true}
-                />
-              </Grid>
+                <Grid item sm={3} className={classes.searchMenu}>
+                  <form onSubmit={onSubmitClick}>
+                    {this.asField}
+                  </form>
+                  </Grid>
             </Hidden>
           </Fragment>
         ) : (
           <Grid item xs={10} sm={9}>
             <AutosuggestField
               {...orgASProps}
+              onSearchClick={onSubmitClick}
+              onChangeValue={this.onSearchChange}
               mobile={true}
               handleOnBlur={this.endSearch}
-              placeholder={'Search...'}
             />
           </Grid>
         )}
@@ -295,5 +317,14 @@ class NavigationHeader extends Component {
     );
   }
 }
+/*
+                    <AutosuggestField
+                      {...orgASProps}
+                      onSearchClick={onSubmitClick}
+                      onChangeValue={this.onSearchChange}
+                      additionaClasses={classes.bootstrapRoot}
+                      small={true}
+                    />
 
+ */
 export default withStyles(styles)(withViewCheck()(withRouter(NavigationHeader)));

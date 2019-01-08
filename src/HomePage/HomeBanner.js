@@ -45,7 +45,7 @@ class HomeBanner extends React.Component {
   };
   
   onSubmitclick = (event) => {
-    console.log("onSubmitClick triggered");
+    console.log("onSubmitClick triggered (HomeBanner)");
     event.preventDefault();
     this.submit();
   };
