@@ -35,7 +35,6 @@ class DesktopSidebar extends React.Component {
                 !collapsed && (
                   <Grid container className={classes.menu}>
                     <div
-                      onClick={() => scrollToTop()}
                       className={classNames(classes.tocItem, classes.link)}
                     >
                       {children}

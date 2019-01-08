@@ -7,15 +7,29 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import Grid from '@material-ui/core/Grid';
 import classNames from 'classnames';
 import { styles } from 'sidebarPage/sidebarStyles';
+import { withRouter } from 'react-router-dom';
 
 class OrgProfileSidebarContent extends React.Component {
-
+  
+  onLinkClick = (id) => {
+    if (!id) return;
+    const element = document.getElementById(id);
+    if (!element) {
+      console.log("Could not find element " + id);
+    }
+    element.scrollIntoView();
+    //const {history} = this.props;
+    //const pathname = history.location.pathname;
+    //history.push(`${pathname}#${href}`)
+  };
+  
   buildTocItem(item) {
     const { classes } = this.props;
     return(
       <div className={classes.tocList} key={`toc-list-${item.card_id}`}>
         <div
-          className={classNames(classes.tocItem)}
+          className={classNames(classes.tocItem, classes.link)}
+          onClick={() => this.onLinkClick(item.card_id)}
         >
           <span className={classNames(classes.tocDot)}>{item.body}</span>
         </div>
@@ -45,10 +59,13 @@ class OrgProfileSidebarContent extends React.Component {
       'top': '-53px'
     };
   
-    return(<Grid container className={classes.menu} style={style} id="sidebar">      <h2>Contents</h2>
+    return(<Grid container className={classes.menu} style={style} id="sidebar">
+      <div>
+        <h2>Contents</h2>
+      </div>
       {this.buildToc(body)}
     </Grid>);
   }
 }
 
-export default withStyles(styles)(OrgProfileSidebarContent);
+export default withRouter(withStyles(styles)(OrgProfileSidebarContent));

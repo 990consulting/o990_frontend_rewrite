@@ -49,7 +49,7 @@ class OrganizationProfile extends React.Component {
     }
   }
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
+  /*componentDidUpdate(prevProps, prevState, snapshot) {
     const history = this.props.history;
     const meta = this.state.meta;
     
@@ -60,7 +60,7 @@ class OrganizationProfile extends React.Component {
         history.replace(expected);
       }
     }
-  }
+  }*/
   
   render() {
     const { loaded, meta, header, body, periods, error } = this.state;

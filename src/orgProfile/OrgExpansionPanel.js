@@ -69,8 +69,9 @@ class OrgExpansionPanel extends React.Component {
     }
     
     constructExpansionPanel() {
+        const {card, card_id} = this.props.raw;
         return (
-          <StyledPanel label={this.getLabel()} startExpanded={this.startExpanded()} displayMode={this.props.raw.card}>
+          <StyledPanel id={card_id} label={this.getLabel()} startExpanded={this.startExpanded()} displayMode={card}>
               <Grid container spacing={24}>
                   {this.constructChildren()}
               </Grid>
