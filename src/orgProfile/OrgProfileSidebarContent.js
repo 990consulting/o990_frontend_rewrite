@@ -17,7 +17,7 @@ class OrgProfileSidebarContent extends React.Component {
     if (!element) {
       console.log("Could not find element " + id);
     }
-    element.scrollIntoView();
+    element.scrollIntoView({block: "end"});
     //const {history} = this.props;
     //const pathname = history.location.pathname;
     //history.push(`${pathname}#${href}`)
