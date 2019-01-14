@@ -77,7 +77,7 @@ class OrgDataTable extends Component {
 			const columns = this.createColumns();
 			const width = 40 + 20 * (columns.length - 1);
 			const isMaximized = width < 100;
-			return (<div className="react-table-container-0">
+			return (<div className={"react-table-container-0" + (isMaximized ? ' maximized' : '')}>
 				<div className="react-table-container-1" style={{width: (isMaximized ? 100 : width) + '%'}}>
 					<div className={"react-table-container-2" + (isMaximized ? ' maximized' : '')}>
 						<ReactTable
